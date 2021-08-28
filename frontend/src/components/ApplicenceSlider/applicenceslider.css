@@ -1,0 +1,72 @@
+.main_applicence_contaier{
+    background-color: #c4c4c4;
+    position: relative;
+     
+}
+
+.position_right{
+    position: absolute;
+    top:50%;
+    right: -8px;
+ 
+}
+
+.position_left{
+    position: absolute;
+    left:'-8px';
+    top:50%;
+    
+
+}
+.applicence_contaier{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  
+    background-color: #c4c4c4;
+  overflow-x:auto;
+  overflow-y:hidden ;
+   
+   
+   margin:10px 30px 10px 30px
+}
+.applicence_container_box{
+    width: 200px;
+    margin: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+}
+.applicence_container_box img{
+   width: 180px;
+   height: 250px;
+   padding: 3px;
+   border-radius: 17px;
+   margin: 0px;
+   padding: 10px;
+ 
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* @media screen and (max-width: 425px) {
+    .container_box{
+     width: 100%;
+     width: 129px;
+     height: 200px;
+    
+      
+    }
+    .container_box img{
+       width: 127px;
+       height: 200px;
+       padding: 3px;
+ 
+     
+    }
+
+  } */

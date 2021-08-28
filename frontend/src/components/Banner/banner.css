@@ -1,0 +1,23 @@
+.banner_container{
+    display:flex;
+    height:100px;
+    margin:10px;
+    padding:10px;
+}
+.banner_container img{
+ flex:1
+}
+
+
+.banner_name{
+    background-color:#FF9900;
+    width:60%;
+    display:"flex";
+    justify-content: center;
+    align-items:center;
+}
+.trust_one{
+    font-size:70px;
+    margin-left:220px ;
+
+}

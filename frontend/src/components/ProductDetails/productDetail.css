@@ -1,0 +1,125 @@
+.product-container{
+    /* background-color: whitesmoke; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100%;
+    width: 100%;
+    margin-top: 120px;
+    /* background-color: aqua; */
+    z-index: 20000;
+   
+  
+}
+
+.productDetails{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    
+  
+
+    
+
+    
+}
+
+.product-left-container{
+    display: flex;
+    margin: 4px;
+    
+
+    
+}
+
+.product-right-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 600px;
+    
+   text-align: left;
+ 
+  
+}
+
+.product_img{
+      /* background-color: forestgreen; */
+      height: auto;
+    
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   width: 500px;
+   border: 2px solid whitesmoke;
+   margin-left: 69px;
+   
+}
+
+.product-right-container  div{
+    margin: 12px;
+    border-radius: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: larger;
+    text-align: center;
+    letter-spacing: 1.5px;
+}
+
+.purchase_btn button{ 
+    padding: 10px;
+    width: 180;
+    height: 40px;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    font-size: large;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+
+.purchase_btn button:hover{
+    background-color: brown;
+
+}
+
+/* .product_img:hover{
+    
+    position:relative;
+    top:-25px;
+    left:-35px;
+   
+    width: 600px;
+    height: 600px;
+    display:block;
+    z-index:999;
+
+    
+} */
+
+@media only screen and (max-width: 768px) {
+    .product-container{
+        margin: 0px;
+       margin-top: 65px;
+    }
+    .productDetails{
+      flex-direction: column;
+      align-items: center;
+    }
+.product-left-container{
+    width: 100%;
+    flex-direction: column-reverse;
+    margin: 0;
+    align-items: center;
+}
+.product-right-container{
+    margin: 0;
+    width: 250px;
+}
+.product_img{
+    margin-left: -4px;
+    text-align: center;
+    width: 250px;
+}
+}

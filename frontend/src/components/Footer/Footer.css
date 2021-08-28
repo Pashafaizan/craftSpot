@@ -1,0 +1,29 @@
+.main-footer {
+  color: white;
+  background-color: black;
+  padding-top: 3em;
+  display: flex;
+  flex-direction: column;
+  /* position:; */
+  /* bottom: 0; */
+  width: 100%;
+}
+.row {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 35px;
+  flex-direction: row;
+  align-items: center;
+  /* width: 85vw; */
+}
+.row2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
