@@ -29,8 +29,6 @@ function App() {
             <Trending />
             <ProductCard topic={"Top Categories"} status={"top"} />
             <ProductCard topic={"New Arrival"} status={"arrival"} />
-   
-            <Banner />
             <Footer />
           </Route>
           <Route exact path="/form">
@@ -48,7 +46,8 @@ function App() {
             <ProductCard />
           </Route>
         </Switch>
-      </Router>
+      </Router> 
+
     </>
   );
 }
