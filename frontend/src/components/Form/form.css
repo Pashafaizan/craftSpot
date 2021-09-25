@@ -1,12 +1,24 @@
+
 .container{
-    /* background-color: dodgerblue; */
+    background-color: dodgerblue;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin:auto;
+    /* z-index: -1; */
+    height: 100vh;
 }
 
 
 
 .form_container{
+    position: relative;
+    top:10px;
     width: 40%;
+    background-color: white;
     margin: auto;
+    padding: 10px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    border-radius: 10px;
    
 }
