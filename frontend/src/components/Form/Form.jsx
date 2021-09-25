@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -30,7 +30,9 @@ function Form() {
   const [item_type, setItemType] = useState("");
   const [item_weight, setItemWeight] = useState("");
   const [item_shape, setItemShape] = useState("");
- 
+  const inputRef = useRef(null);
+  const [previewImage,setPreviewImage] = useState([]);
+  
  const [show_type,setType]=useState('')
   
   const [imageName, setImageName] = useState([]);
@@ -101,15 +103,27 @@ function Form() {
 
   };
   let file = "";
-  const handleInputSelect = (event) => {
-    console.log(event)
-    console.log(event.target.files)
-    Object.entries(event.target.files).map((e) => {
-      console.log(e[1]);
-      sendData(e[1]);
+  const handleInputSelect = (e) => {
+    
+    if(e.target.files.length > 4) {
+      alert("Maximum 4 images are allowed.")
+      inputRef.current.value = ''
+      return;
+    }
+    console.log(e.target.files[0]);
+    Object.entries(e.target.files).map((file) => {
+      var oFReader = new FileReader();
+      oFReader.readAsDataURL(file[1]);
+      oFReader.onload = (OFEvent)=>{
+        console.log([...previewImage,OFEvent.target.result],["MOHD"])
+        setPreviewImage(previewImage => [...previewImage,OFEvent.target.result]);
+        console.log(previewImage,["SUHAIL"])
+    }
     });
 
   };
+
+  
 
   const sendData = async (file) => {
     var formData = new FormData();
@@ -148,7 +162,6 @@ function Form() {
     });
     clearForm();
   }
-
 
 
 
@@ -283,8 +296,11 @@ function Form() {
 
           
 
-            <input type="file" multiple onChange={handleInputSelect} />
-           
+            <input type="file" ref={inputRef} multiple accept="image/png, image/jpeg"  onChange={handleInputSelect} />
+            {1 && <img src={previewImage[0]} ></img>}
+            {1 && <img src={previewImage[1]}></img>}
+            {1 && <img src={previewImage[2]}></img>}
+            {1 && <img src={previewImage[3]}></img>}
 
             <Button
               variant="contained"
