@@ -3,12 +3,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
+import MultilineTextFields from './MultilineTextFields'
+import './form.css'
 import { fetchData } from "../../middleware/requestHandler";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
       width: "25ch",
+      display:"flex",
+     flexDirection:"column",
+     justifyContent:"center",
+     alignItems:"center"
     },
   },
 }));
@@ -148,9 +154,9 @@ function Form() {
 
   return (
     <>
-      <div className>
-        <Container maxWidth="lg">
-          <h1>Fill Form Details</h1>
+      <div className="container" >
+        <Container className="form_container" maxWidth="lg">
+          <h1 style={{textAlign:"center",marginTop:2 }}>Fill Form Details</h1>
           <form
             className={classes.root}
             noValidate
@@ -184,7 +190,7 @@ function Form() {
               label="Description of Model"
               variant="outlined"
               color="primary"
-              style={{ width: "60%" }}
+             
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
@@ -215,24 +221,28 @@ function Form() {
               label="Item Color"
               variant="outlined"
               color="primary"
-              style={{ width: "90%" }}
+             
               onChange={(e) => {
                 setItemColor(e.target.value);
               }}
             />
+             {/* <MultilineTextFields setType = {(type)=>{
+               setItemType(type);
+
+           }} /> */}
 
             <TextField
               id="outlined-secondary"
               label="Item Type(Mugs,Mirror...)"
               variant="outlined"
               color="primary"
-              style={{ width: "90%" }}
+               
               onChange={(e) => {
                 setItemType(e.target.value);
               }}
             />
 
-            <TextField
+            {/* <TextField
               id="outlined-secondary"
               label="show type (like top categries, new arrivals.....)"
               variant="outlined"
@@ -241,8 +251,11 @@ function Form() {
               onChange={(e) => {
                 setType(e.target.value);
               }}
-            />
+            /> */}
+           <MultilineTextFields setType = {(type)=>{
+           setType(type);
 
+           }} />
            
           
 
@@ -271,7 +284,7 @@ function Form() {
           
 
             <input type="file" multiple onChange={handleInputSelect} />
-
+           
 
             <Button
               variant="contained"
@@ -279,7 +292,7 @@ function Form() {
               onClick={submitForm}
               value="submit"
             >
-              Primary
+              Submit
             </Button>
             {/* </div>  */}
           </form>

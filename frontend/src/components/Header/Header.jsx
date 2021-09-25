@@ -3,7 +3,7 @@ import {ReactComponent as WhatSvg} from "../../resources/icons/what.svg";
 import {ReactComponent as UserSvg} from "../../resources/icons/user.svg";
 import {ReactComponent as SearchSvg} from "../../resources/icons/search.svg";
 import {ReactComponent as LikeSvg} from "../../resources/icons/like.svg";
-import {ReactComponent as CrossSvg} from "../../resources/icons/cross.svg";
+  import {ReactComponent as CrossSvg} from "../../resources/icons/cross.svg";
 import {ReactComponent as CompanyLogoSvg} from "../../resources/icons/companylogo.svg";
 import {ReactComponent as SimpleMenuSvg} from "../../resources/icons/Menu.svg";
 import "./header.css";
