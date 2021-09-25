@@ -10,12 +10,46 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "80ch",
       display:"flex",
-     flexDirection:"column",
-     justifyContent:"center",
-     alignItems:"center"
+      
+   
     },
+    '@media (max-width: 1024px)': {
+      "& > *": {
+        
+        width: "40ch",
+        
+        
+     
+      }
+    },
+    '@media (max-width: 768px)': {
+      "& > *": {
+        
+        width: "30ch",
+           },
+        
+      
+    },
+    
+    '@media (max-width: 425px)': {
+      "& > *": {
+        
+        width: "20ch",
+        
+        
+     
+      },
+      ".form_container":{
+        width:"80%"
+                   }
+      
+    },
+
+
+
+
   },
 }));
 
@@ -168,8 +202,8 @@ function Form() {
   return (
     <>
       <div className="container" >
-        <Container className="form_container" maxWidth="lg">
-          <h1 style={{textAlign:"center",marginTop:2 }}>Fill Form Details</h1>
+        <Container className="form_container" maxWidth="lg" style={{margin:"auto",width:"44%",zIndex:100}}>
+          <h3 style={{textAlign:"center",marginTop:2,letterSpacing:2 }}>Product Details</h3>
           <form
             className={classes.root}
             noValidate
@@ -183,7 +217,7 @@ function Form() {
               label="Name of Items"
               variant="outlined"
               color="primary"
-              style={{ width: "60%" }}
+            
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -254,8 +288,18 @@ function Form() {
                 setItemType(e.target.value);
               }}
             />
+               {/* <TextField
+              id="outlined-secondary"
+              label="Item Color"
+              variant="outlined"
+              color="primary"
+              
+              onChange={(e) => {
+                setItemColor(e.target.value);
+              }}
+            /> */}
 
-            {/* <TextField
+            <TextField
               id="outlined-secondary"
               label="show type (like top categries, new arrivals.....)"
               variant="outlined"
@@ -264,7 +308,7 @@ function Form() {
               onChange={(e) => {
                 setType(e.target.value);
               }}
-            /> */}
+            />
            <MultilineTextFields setType = {(type)=>{
            setType(type);
 
@@ -295,14 +339,18 @@ function Form() {
          
 
           
-
             <input type="file" ref={inputRef} multiple accept="image/png, image/jpeg"  onChange={handleInputSelect} />
             {1 && <img src={previewImage[0]} ></img>}
             {1 && <img src={previewImage[1]}></img>}
             {1 && <img src={previewImage[2]}></img>}
             {1 && <img src={previewImage[3]}></img>}
 
+           
+         <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+
+
             <Button
+            style={{width:200}}
               variant="contained"
               color="primary"
               onClick={submitForm}
@@ -310,7 +358,8 @@ function Form() {
             >
               Submit
             </Button>
-            {/* </div>  */}
+            </div>
+       
           </form>
         </Container>
       </div>
