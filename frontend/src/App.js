@@ -17,6 +17,8 @@ import React, { useState } from "react";
 import ProductDetail from "../src/components/ProductDetails/ProductDetail";
 import AllProduct from "./components/AllProduct/AllProduct";
 import Addcartproduct from "./components/Addcartproduct/Addcartproduct";
+import Login from "./components/Marchandise/Login/Login"
+import Signup from "./components/Marchandise/Signup/Signup"
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
+            
             <Header />
             <Carousel />
             <Trending />
@@ -31,9 +34,9 @@ function App() {
             <ProductCard topic={"New Arrival"} status={"arrival"} />
             <Footer />
           </Route>
-          <Route exact path="/form">
+          {/* <Route exact path="/form">
             <Form />
-          </Route>
+          </Route> */}
           <Route exact path="/cart">
             <Addcartproduct />
           </Route>
@@ -44,6 +47,22 @@ function App() {
           <Route path="/product/:productId" component={ProductDetail} />
           <Route exact path="/product">
             <ProductCard />
+          </Route>
+          <Route exact path="/marchandise/login">
+            <Login/>
+            
+          </Route>
+          <Route exact path="/form">
+            <Form/>
+        
+          </Route>
+          <Route exact path="/product/form">
+            <Form/>
+        
+          </Route>
+          <Route exact path="/marchandise/signup">
+            <Signup/>
+        
           </Route>
         </Switch>
       </Router> 
