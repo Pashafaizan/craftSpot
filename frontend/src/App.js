@@ -19,6 +19,7 @@ import AllProduct from "./components/AllProduct/AllProduct";
 import Addcartproduct from "./components/Addcartproduct/Addcartproduct";
 import Login from "./components/Marchandise/Login/Login"
 import Signup from "./components/Marchandise/Signup/Signup"
+import SellerDashboard from "./components/Marchandise/SellerDashboard/SellerDashboard"
 
 function App() {
   return (
@@ -62,6 +63,10 @@ function App() {
           </Route>
           <Route exact path="/marchandise/signup">
             <Signup/>
+        
+          </Route>
+          <Route exact path="/seller/dashboard">
+          <SellerDashboard/>
         
           </Route>
         </Switch>

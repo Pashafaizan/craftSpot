@@ -38,7 +38,7 @@ function RegisterForm() {
   const [sponser_id, setSponserId] = useState("");
   const [sponser_name, setSponserName] = useState("");
   const [user_name, setName] = useState("");
-  const [date_of_birth, setdate_of_birth] = useState(new Date());
+  // const [date_of_birth, setdate_of_birth] = useState(new Date());
   const [mobile_number, setMobileNumber] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,34 +52,28 @@ function RegisterForm() {
   const [visibilityIcon, setVisibilityIcon] = useState(false);
   const [cVisibilityIcon, setCVisibilityIcon] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+  const [type, setType]=useState('seller');
 
   const classes = useStyles();
   let history = useHistory();
 
   let payload = {
-    sponser_id,
-    sponser_name,
+ 
     user_name,
-    date_of_birth,
+    type,
     mobile_number,
     email,
     password,
   };
   const checkValidation = () => {
-    if (sponser_id === "") {
-      setErrorSId(true);
-      return false;
-    }
-    setErrorSId(false);
+ 
+  
     if (user_name === "") {
       setErrorName(true);
       return false;
     }
     setErrorName(false);
-    if (date_of_birth === "") {
-      setErrorDOB(true);
-      return false;
-    }
+   
     if (email === "") {
       setErrorEmail(true);
       return false;
@@ -106,41 +100,27 @@ function RegisterForm() {
   };
 
   const clearFields = () => {
-    setSponserId("");
-    setSponserName("");
+    
     setName("");
     setMobileNumber("");
     setEmail("");
     setPassword("");
     setConfirmPassword("");
-    setdate_of_birth(new Date());
+    
   };
 
-  useEffect(() => {
-    fetchData(`/user?user_id=${sponser_id}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }).then((res) => {
-      console.log(res);
-      setSponserName("Loding.....");
-      if (res.status == "true") {
-        setSponserName(res.userData.user_name);
-        console.log(res.userData.user_name);
-        return;
-      }
-    });
-  }, [sponser_id]);
+ 
 
   const submitForm = () => {
-    fetchData(`/register`, {
+    fetchData(`seller/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     }).then((res) => {
-      alert("Your user ID", res.userId);
+      alert(res.message);
     });
 
-    clearFields();
+    // clearFields();
   };
 
   return (
@@ -173,23 +153,7 @@ function RegisterForm() {
             noValidate
             autoComplete="off"
           >
-            {/* <TextField
-              id="outlined-basic"
-              label="Sponser ID *"
-              error={errorSId}
-              variant="outlined"
-              value={sponser_id}
-              onChange={(e) => {
-                setSponserId(e.target.value);
-              }}
-            />
-            <TextField
-              id="outlined-basic"
-              label="Sponser Name"
-              variant="outlined"
-              value={sponser_name}
-              disabled={true}
-            /> */}
+         
             <TextField
               id="outlined-basic"
               label="Enter Your Name *"
@@ -200,20 +164,7 @@ function RegisterForm() {
                 setName(e.target.value);
               }}
             />
-            <TextField
-              id="outlined-basic"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              label="Date of birth*"
-              value={date_of_birth}
-              error={errorDOB}
-              variant="outlined"
-              type={"date"}
-              onChange={(e) => {
-                setdate_of_birth(e.target.value);
-              }}
-            />
+          
             <TextField
               id="outlined-basic"
               error={errorMNumber}

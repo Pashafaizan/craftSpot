@@ -3,58 +3,39 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import MultilineTextFields from './MultilineTextFields'
-import './form.css'
+import MultilineTextFields from "./MultilineTextFields";
+import "./form.css";
 import { fetchData } from "../../middleware/requestHandler";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
       width: "80ch",
-      display:"flex",
-      
-   
+      display: "flex",
     },
-    '@media (max-width: 1024px)': {
+    "@media (max-width: 1024px)": {
       "& > *": {
-        
         width: "40ch",
-        
-        
-     
-      }
-    },
-    '@media (max-width: 768px)': {
-      "& > *": {
-        
-        width: "30ch",
-           },
-        
-      
-    },
-    
-    '@media (max-width: 425px)': {
-      "& > *": {
-        
-        width: "20ch",
-        
-        
-     
       },
-      ".form_container":{
-        width:"80%"
-                   }
-      
+    },
+    "@media (max-width: 768px)": {
+      "& > *": {
+        width: "30ch",
+      },
     },
 
-
-
-
+    "@media (max-width: 425px)": {
+      "& > *": {
+        width: "20ch",
+      },
+      ".form_container": {
+        width: "80%",
+      },
+    },
   },
 }));
 
 function Form() {
-
   const [item_name, setName] = useState("");
   const [item_price, setPrice] = useState();
   const [item_description, setDescription] = useState("");
@@ -65,13 +46,13 @@ function Form() {
   const [item_weight, setItemWeight] = useState("");
   const [item_shape, setItemShape] = useState("");
   const inputRef = useRef(null);
-  const [previewImage,setPreviewImage] = useState([]);
-  
- const [show_type,setType]=useState('')
-  
+  const [previewImage, setPreviewImage] = useState([]);
+  const [files, setfiles] = useState([]);
+  const [show_type, setType] = useState("");
+
   const [imageName, setImageName] = useState([]);
-  
-  const clearForm = ()=>{
+
+  const clearForm = () => {
     console.log("This is clear form");
     setName("");
     setPrice("");
@@ -79,33 +60,28 @@ function Form() {
     setPlaceOfOrigin("");
     setItemMaterial("");
     setItemColor("");
-    setItemType('');
+    setItemType("");
     setItemWeight("");
     setItemShape("");
     setType("");
     setImageName("");
-    
-  }
+  };
 
   const classes = useStyles();
   let payload = {
-
     item_name,
     item_price,
-  
+
     item_description,
- 
-    
+
     place_of_origin,
     material,
     item_color,
     item_type,
- 
-    
+
     item_weight,
     item_shape,
-    
-   
+
     show_type,
   };
   const validateData = (payload) => {
@@ -134,30 +110,28 @@ function Form() {
     console.log(e.target);
     let Images = e.target.file;
     setImage(e.target.file);
-
   };
   let file = "";
   const handleInputSelect = (e) => {
-    
-    if(e.target.files.length > 4) {
-      alert("Maximum 4 images are allowed.")
-      inputRef.current.value = ''
+    if (e.target.files.length > 4) {
+      alert("Maximum 4 images are allowed.");
+      inputRef.current.value = "";
       return;
     }
     console.log(e.target.files[0]);
     Object.entries(e.target.files).map((file) => {
       var oFReader = new FileReader();
       oFReader.readAsDataURL(file[1]);
-      oFReader.onload = (OFEvent)=>{
-        console.log([...previewImage,OFEvent.target.result],["MOHD"])
-        setPreviewImage(previewImage => [...previewImage,OFEvent.target.result]);
-        console.log(previewImage,["SUHAIL"])
-    }
+      // console.log(e.target.file[0]);
+      setfiles([...files, file]);
+      oFReader.onload = (OFEvent) => {
+        setPreviewImage((previewImage) => [
+          ...previewImage,
+          OFEvent.target.result,
+        ]);
+      };
     });
-
   };
-
-  
 
   const sendData = async (file) => {
     var formData = new FormData();
@@ -170,45 +144,46 @@ function Form() {
     };
 
     fetchData("/upload", requestOptions).then((data) => {
-      setImageName((e)=>[...e,data.filename])
-       
+      setImageName((e) => [...e, data.filename]);
+
       console.log(data);
       console.log(imageName);
-
     });
   };
 
-
-  const submitForm = ()=>{
-    
+  const submitForm = () => {
     payload = {
       ...payload,
-      images:imageName
-    }
+      images: imageName,
+    };
+
     fetchData("/form", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     }).then((data) => {
-
-      console.log("this is")
-    
+      files.map(async(v, i) => {
+        await sendData(v);
+      });
     });
     clearForm();
-  }
-
-
+  };
 
   return (
     <>
-      <div className="container" >
-        <Container className="form_container" maxWidth="lg" style={{margin:"auto",width:"44%",zIndex:100}}>
-          <h3 style={{textAlign:"center",marginTop:2,letterSpacing:2 }}>Product Details</h3>
+      <div className="container">
+        <Container
+          className="form_container"
+          maxWidth="lg"
+          style={{ margin: "auto", width: "44%", zIndex: 100 }}
+        >
+          <h3 style={{ textAlign: "center", marginTop: 2, letterSpacing: 2 }}>
+            Product Details
+          </h3>
           <form
             className={classes.root}
             noValidate
             autoComplete="off"
-         
             method="post"
             encType="multipart/form-data"
           >
@@ -217,7 +192,6 @@ function Form() {
               label="Name of Items"
               variant="outlined"
               color="primary"
-            
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -237,18 +211,16 @@ function Form() {
               label="Description of Model"
               variant="outlined"
               color="primary"
-             
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
             />
-          
+
             <TextField
               id="outlined-secondary"
               label="Place Of origin"
               variant="outlined"
               color="primary"
-             
               onChange={(e) => {
                 setPlaceOfOrigin(e.target.value);
               }}
@@ -258,7 +230,6 @@ function Form() {
               label="Material"
               variant="outlined"
               color="primary"
-          
               onChange={(e) => {
                 setItemMaterial(e.target.value);
               }}
@@ -268,12 +239,11 @@ function Form() {
               label="Item Color"
               variant="outlined"
               color="primary"
-             
               onChange={(e) => {
                 setItemColor(e.target.value);
               }}
             />
-             {/* <MultilineTextFields setType = {(type)=>{
+            {/* <MultilineTextFields setType = {(type)=>{
                setItemType(type);
 
            }} /> */}
@@ -283,12 +253,11 @@ function Form() {
               label="Item Type(Mugs,Mirror...)"
               variant="outlined"
               color="primary"
-               
               onChange={(e) => {
                 setItemType(e.target.value);
               }}
             />
-               {/* <TextField
+            {/* <TextField
               id="outlined-secondary"
               label="Item Color"
               variant="outlined"
@@ -304,24 +273,21 @@ function Form() {
               label="show type (like top categries, new arrivals.....)"
               variant="outlined"
               color="primary"
-              
               onChange={(e) => {
                 setType(e.target.value);
               }}
             />
-           <MultilineTextFields setType = {(type)=>{
-           setType(type);
-
-           }} />
-           
-          
+            <MultilineTextFields
+              setType={(type) => {
+                setType(type);
+              }}
+            />
 
             <TextField
               id="outlined-secondary"
               label="tem Weight"
               variant="outlined"
               color="primary"
-               
               onChange={(e) => {
                 setItemWeight(e.target.value);
               }}
@@ -331,39 +297,43 @@ function Form() {
               label="Item Shape"
               variant="outlined"
               color="primary"
-            
               onChange={(e) => {
                 setItemShape(e.target.value);
               }}
             />
-         
 
-          
-            <input type="file" ref={inputRef} multiple accept="image/png, image/jpeg"  onChange={handleInputSelect} />
-            {1 && <img src={previewImage[0]} ></img>}
+            <input
+              type="file"
+              ref={inputRef}
+              multiple
+              accept="image/png, image/jpeg"
+              onChange={handleInputSelect}
+            />
+            {1 && <img src={previewImage[0]}></img>}
             {1 && <img src={previewImage[1]}></img>}
             {1 && <img src={previewImage[2]}></img>}
             {1 && <img src={previewImage[3]}></img>}
 
-           
-         <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-
-
-            <Button
-            style={{width:200}}
-              variant="contained"
-              color="primary"
-              onClick={submitForm}
-              value="submit"
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
-              Submit
-            </Button>
+              <Button
+                style={{ width: 200 }}
+                variant="contained"
+                color="primary"
+                onClick={submitForm}
+                value="submit"
+              >
+                Submit
+              </Button>
             </div>
-       
           </form>
         </Container>
       </div>
-
     </>
   );
 }

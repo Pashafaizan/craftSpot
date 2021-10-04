@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login({setToken}) {
-  const [user_id, setUserId] = useState("");
+  const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
   
@@ -39,11 +39,11 @@ function Login({setToken}) {
   const dispatch = useDispatch();
 
   let payload = {
-    user_id,
+    email,
     password,
   };
   const checkValidation = () => {
-    if (user_id === "") {
+    if (email === "") {
       setErrorId(true);
       return false;
     }
@@ -58,11 +58,11 @@ function Login({setToken}) {
 
   const clearFields = () =>{
     setPassword("")
-    setUserId("")
+    setEmail("")
   }
 
   const submitForm = () => {
-    fetchData(`/marchandise/login`, {
+    fetchData(`seller/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body:JSON.stringify(payload),
@@ -73,7 +73,7 @@ function Login({setToken}) {
             // localStorage.setItem('access_token',res.access_token);
             // localStorage.setItem('refresh_token',res.refresh_token);
             // setToken(localStorage.getItem("access_token"));
-            history.push('/product/form')
+            history.push('/seller/dashboard')
             // window.location.reload(); 
           }
           
@@ -81,7 +81,7 @@ function Login({setToken}) {
      
       });
   
-      clearFields();
+      // clearFields();
     }
 
   return (
@@ -99,12 +99,12 @@ function Login({setToken}) {
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
-            label="Distributor ID"
+            label="Email "
             error={errorId}
-            value={user_id}
+            value={email}
             variant="outlined"
             onChange={(e) => {
-              setUserId(e.target.value);
+              setEmail(e.target.value);
             }}
           />
           <TextField
