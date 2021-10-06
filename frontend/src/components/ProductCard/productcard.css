@@ -20,6 +20,13 @@
   padding: 3px;
   margin: 0px;
 }
+
+.product_container_box:hover img{
+opacity: 0.3;
+transition: 0.2s ease-in-out;
+}
+
+
 .product-description{
   text-align: center;
   max-width: 75%;
@@ -29,6 +36,63 @@
 .product-description h3{
 letter-spacing: 2px;
 }
+.btn_details{
+  border :none;
+  margin: 14px;
+  padding: 4px;
+  width: 140px;
+  height: 40px;
+  border: 2px solid black;
+  background-color: white;
+  letter-spacing: 2px;font-size:18px;
+
+}
+
+.btn_details:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.btn_details span{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s all ease-in-out;
+  margin: 4px;
+}
+
+
+.btn_details span:after {
+  /* content: '\00bb'; */
+  content: url('../../resources/icons/Vector\ \(1\).png');
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -30px;
+  transition: 0.5s ease-in-out;
+ 
+  
+}
+
+
+.btn_details:hover span {
+  padding-right: 40px;
+}
+
+.btn_details:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* 
+.show{
+display: none;
+}
+.show:hover{
+  display: block;
+} */
+
 @media screen and (max-width: 425px) {
   .product_container_box {
     width: 100%;
