@@ -47,7 +47,7 @@ function Form() {
   const [item_shape, setItemShape] = useState("");
   const inputRef = useRef(null);
   const [previewImage, setPreviewImage] = useState([]);
-  const [files, setfiles] = useState([]);
+  const [files, setFiles] = useState([]);
   const [show_type, setType] = useState("");
 
   const [imageName, setImageName] = useState([]);
@@ -124,7 +124,7 @@ function Form() {
       var oFReader = new FileReader();
       oFReader.readAsDataURL(file[1]);
       // console.log(e.target.file[0]);
-      setfiles([...files, file]);
+      setFiles([...files, file]);
       oFReader.onload = (OFEvent) => {
         setPreviewImage((previewImage) => [
           ...previewImage,
@@ -258,16 +258,7 @@ function Form() {
                 setItemType(e.target.value);
               }}
             />
-            {/* <TextField
-              id="outlined-secondary"
-              label="Item Color"
-              variant="outlined"
-              color="primary"
-              
-              onChange={(e) => {
-                setItemColor(e.target.value);
-              }}
-            /> */}
+            
 
             <TextField
               id="outlined-secondary"
