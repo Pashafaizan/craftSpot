@@ -39,7 +39,7 @@ function ProductCard({ topic, status }) {
             <>
               {e.show_type === status && (
                 <>
-                  <Link to={`/product/${e._id}`}>
+                  
                     <div className="product_container_box">
                       {/* <div style={{marginLeft:65,marginBottom:-65,zIndex:99,alignSelf:"start",backgroundImage:"url("+ circle+")",padding:7 , width: 50,height:50,backgroundSize:"cover"}}>
                        <img src={fifty_off} style={{width:35,height:35}} />
@@ -47,15 +47,21 @@ function ProductCard({ topic, status }) {
                       <img
                         src={`http://localhost:7860/images/${e.images[0]}`}
                       />
-
+                   
+                      <div>product brand name</div>
                       <div className="product_name">
                         Rs. <span>{e.item_price}</span>
                       </div>
+                      <Link to={`/product/${e._id}`}>
+                     
+                      <button className="btn_details"><span>Details</span></button>
+                      </Link>
                     </div>
                     <div>
         
-        </div>
-                  </Link>
+                    </div>
+                 
+                
                 </>
               )}
             </>

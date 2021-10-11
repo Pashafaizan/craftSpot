@@ -21,7 +21,9 @@ const currencies = [
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      width:"100%"
+      margin: theme.spacing(1),
+      width: '80ch',
+      margin:0,
     },
   },
 }));
