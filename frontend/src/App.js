@@ -31,8 +31,8 @@ function App() {
             <Header />
             <Carousel />
             <Trending />
-            <ProductCard topic={"Top Categories"} status={"top"} />
-            <ProductCard topic={"New Arrival"} status={"arrival"} />
+            <ProductCard topic={"BAR PRODUCTS & ACCESSORIES"} status={"BAR PRODUCTS & ACCESSORIES"} />
+            <ProductCard topic={"METAL FURNITURES"} status={"METAL FURNITURES"} />
             <Footer />
           </Route>
           {/* <Route exact path="/form">

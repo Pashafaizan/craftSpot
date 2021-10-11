@@ -8,8 +8,8 @@ router.post("/upload", uplaodController.fileUpload);
 router.get("/list", userController.getList);
 router.post("/mail", userController.sendMail);
 router.get("/product", userController.getProduct);
-router.post("/seller/signup",sellerSignup);
-router.post("/seller/login",sellerLogin);
+router.post("/user/signup",sellerSignup);
+router.post("/user/login",sellerLogin);
 
 
 module.exports = router;

@@ -62,7 +62,7 @@ function Login({setToken}) {
   }
 
   const submitForm = () => {
-    fetchData(`seller/login`, {
+    fetchData(`user/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body:JSON.stringify(payload),
@@ -70,8 +70,9 @@ function Login({setToken}) {
         
           console.log(res);
           if(res.message=="Login successfully"){
-            // localStorage.setItem('access_token',res.access_token);
-            // localStorage.setItem('refresh_token',res.refresh_token);
+            localStorage.setItem('access_token',res.access_token);
+            localStorage.setItem('refresh_token',res.refresh_token);
+            localStorage.setItem('user',JSON.stringify(res.user));
             // setToken(localStorage.getItem("access_token"));
             history.push('/seller/dashboard')
             // window.location.reload(); 
@@ -123,7 +124,7 @@ function Login({setToken}) {
           Login
         </button>
         <div className="signin_div">
-          No Account? Please <a href="/register"> Register Here</a>
+          No Account? Please <a href="/marchandise/signup"> Register Here</a>
         </div>
       </div>
     </div>

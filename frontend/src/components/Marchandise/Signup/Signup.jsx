@@ -112,7 +112,7 @@ function RegisterForm() {
  
 
   const submitForm = () => {
-    fetchData(`seller/signup`, {
+    fetchData(`user/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -120,7 +120,7 @@ function RegisterForm() {
       alert(res.message);
     });
 
-    // clearFields();
+    clearFields();
   };
 
   return (
@@ -253,7 +253,7 @@ function RegisterForm() {
             Submit
           </button>
           <div className="signin_div">
-            Already have an Account? Please <a href="/login"> Sign In</a>
+            Already have an Account? Please <a href="/marchandise/login"> Sign In</a>
           </div>
         </div>
       </div>

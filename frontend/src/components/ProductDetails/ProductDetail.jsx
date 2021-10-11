@@ -10,13 +10,14 @@ import { useSelector, useDispatch } from "react-redux";
 import ImageCard from "../ImageCard/ImageCard";
 import Addcartproduct from "../Addcartproduct/Addcartproduct";
 import { useHistory } from "react-router-dom";
+import Popup from "../Popup/Popup";
 
 function ProductDetail() {
   let history = useHistory();
   const dispatch = useDispatch();
 
   const { productId } = useParams();
-
+  const [popUpState,setPopUpState] = useState(false);
   const [image, setImage] = useState(false);
   const [imageName, setImageName] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -72,19 +73,21 @@ function ProductDetail() {
             <div>{productData.material}</div>
             <div className="purchase_btn">
               <button
+              style={{color:'white',backgroundColor:"dodgerblue"}}
                 onClick={() => {
-                  let users = JSON.parse(localStorage.getItem("users") || "[]");
-                  let user = {
-                    image: singleImage,
-                    name: productData.item_name,
-                    price: productData.item_price,
-                  };
-                  users.push(user);
-                  localStorage.setItem("users", JSON.stringify(users));
-                  history.push("/cart");
+                  // let users = JSON.parse(localStorage.getItem("users") || "[]");
+                  // let user = {
+                  //   image: singleImage,
+                  //   name: productData.item_name,
+                  //   price: productData.item_price,
+                  // };
+                  // users.push(user);
+                  // localStorage.setItem("users", JSON.stringify(users));
+                  // history.push("/cart");
+                  setPopUpState(true);
                 }}
               >
-                Add cart
+                Send query
               </button>
               {/* <button>Add To Cart</button> */}
             </div>
@@ -96,9 +99,10 @@ function ProductDetail() {
         <h3>Product Description</h3>
         <ProductDescription data={productData} />
       </div>
-      <h4>Review</h4>
+      {/* <h4>Review</h4>
 
-      <div className="product-reviews"></div>
+      <div className="product-reviews"></div> */}
+      {popUpState && <Popup open={popUpState} setOpen={(state)=>{setPopUpState(state)}}/>}
     </div>
   );
 }

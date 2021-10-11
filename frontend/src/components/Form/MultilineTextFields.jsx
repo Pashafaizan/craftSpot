@@ -4,25 +4,52 @@ import TextField from '@material-ui/core/TextField';
 
 const currencies = [
   {
-    value: 'TOP',
-    label: 'top',
+    label: 'BAR PRODUCTS & ACCESSORIES',
+    value: 'BAR PRODUCTS & ACCESSORIES',
   },
   {
-    value: 'NEW',
-    label: 'new',
+    label: 'COPPERWARE PRODUCTS',
+    value: 'COPPERWARE PRODUCTS',
   },
   {
-    value: 'OTHER',
-    label: 'other',
+    label: 'CUTLERY & NAPKIN RINGS',
+    value: 'CUTLERY & NAPKIN RINGS',
   },
-
+  {
+    label: 'KITCHENWARED',
+    value: 'KITCHENWARED',
+  },
+  {
+    label: 'LAMPS & LIGHTING',
+    value: 'LAMPS & LIGHTING',
+  },
+  {
+    label: 'LANTERNS AND CANDLE HOLDERS',
+    value: 'LANTERNS AND CANDLE HOLDERS',
+  },
+  {
+    label: 'METAL FURNITURES',
+    value: 'METAL FURNITURES',
+  },
+  {
+    label: 'MIRRORS & DECORATIVE',
+    value: 'MIRRORS & DECORATIVE',
+  },
+  {
+    label: 'TABLETOP ITEMS',
+    value: 'TABLETOP ITEMS',
+  },
+  {
+    label: 'WOODEN FURNITURES',
+    value: 'WOODEN FURNITURES',
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '80ch',
+      width: '100ch',
       margin:0,
     },
   },
@@ -30,11 +57,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MultilineTextFields(props) {
   const classes = useStyles();
-  const [currency, setCurrency] = React.useState('OTHER');
+  const [currency, setCurrency] = React.useState('');
 
   const handleChange = (event) => {
-    setCurrency(event.target.value);
-    props.setType(currency);
+    setCurrency((p)=>event.target.value);
+    props.setType(event.target.value);
   };
 
   return (

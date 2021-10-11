@@ -49,4 +49,4 @@ const formSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("form_schema", formSchema);
+module.exports = mongoose.model("products", formSchema);

@@ -30,7 +30,7 @@ function Form() {
   const [previewImage, setPreviewImage] = useState([]);
   const [files,setFiles] = useState([]);
 
-  const [show_type, setType] = useState("1");
+  const [show_type, setType] = useState("BAR PRODUCTS & ACCESSORIES");
 
   const [imageName, setImageName] = useState([]);
 
@@ -45,8 +45,9 @@ function Form() {
     setItemType("");
     setItemWeight("");
     setItemShape("");
-    setType("");
+    setType("BAR PRODUCTS & ACCESSORIES");
     setImageName([]);
+    setFiles([])
     setPreviewImage([])
     inputRef.current.value = "";
   };
@@ -248,7 +249,7 @@ function Form() {
               setItemType(e.target.value);
             }}
           />
-          <TextField
+          {/* <TextField
             id="outlined-secondary"
             label="show type (like top categries, new arrivals.....)"
             variant="outlined"
@@ -257,7 +258,7 @@ function Form() {
             onChange={(e) => {
               setType(e.target.value);
             }}
-          />
+          /> */}
           <MultilineTextFields
             setType={(type) => {
               setType(type);
