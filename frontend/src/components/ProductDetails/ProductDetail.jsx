@@ -25,7 +25,7 @@ function ProductDetail() {
   const [singleImage, setSingleImage] = useState([]);
   const productitems = useSelector((state) => state);
   useEffect(() => {
-    fetchData(`/product?id=${productId}`, {
+    fetchData(`product?id=${productId}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((json) => {

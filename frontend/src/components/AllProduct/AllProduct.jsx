@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import {useSelector,useDispatch} from "react-redux"
 import { fetchData } from "../../middleware/requestHandler";
 import Rating from '@mui/material/Rating';
 import "./allproduct.css"
-function AllProduct() {
+import {selectedProducts, removeSelectedProducts,setProducts} from "../../redux/action/productAction"
+function AllProduct(props) {
+  const dispatch = useDispatch();
+  console.log(props.typePr);
   const imgRef =  React.useRef([...new Array(26)].map(() => React.createRef()));
   const [isShown, setIsShown] = useState(-1);
   const [data, setData] = useState([]);
+  const location = useLocation();
+  const {type} = location.state;
+  console.log(type);
   useEffect(() => {
     fetchData("/list", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {
+      dispatch(setProducts(data))
       console.log(data);
       setData(data);
     });
@@ -31,11 +39,16 @@ function AllProduct() {
 
   console.log(data)
   return (
+    <>
+       <h1 style={{marginTop:120,marginLeft:40}}>{type}</h1>
     <div className="product_container"> 
+ 
       {data.map((e,i) => {
         return (
           <>
-            {
+          {console.log(e.show_type)}
+          
+            {e.show_type==type &&
                 <Link to={`/product/${e._id}`} style={{textDecoration:"none"}} onMouseEnter={() => setIsShown(i)} onMouseLeave={() => setIsShown(-1)}>
                   <div className="product_container_box">
                   
@@ -54,6 +67,7 @@ function AllProduct() {
         );
       })}
     </div>
+    </>
   );
 }
 

@@ -44,6 +44,71 @@ textarea:focus, input:focus{
   padding: 10px;
 }
 
+.dropdown {
+  float: left;
+  overflow: hidden;
+  margin: 0px !important;
+  padding: 0px !important;
+
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.outline:hover{
+  border-bottom: 2px solid black;
+  cursor: pointer;
+  
+}
+ .dropdown:hover  {
+ border-bottom: 2px solid black;
+ cursor: pointer;
+}
+.dropbtn i{
+  margin: 8px;
+  font-size: 18px;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+
+
+
+
+
 @media (max-width: 374px) {
   .company-logo {
     display: none;

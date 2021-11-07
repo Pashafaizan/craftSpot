@@ -1,9 +1,14 @@
 .product_container{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 100px;
+    /* margin-top: 100px; */
+    /* flex-direction: column; */
   
 
+}
+.product_container h1{
+    letter-spacing: 2px;
+    word-spacing: 2px;
 }
 .product_container_box{
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
