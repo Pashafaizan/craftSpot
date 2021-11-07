@@ -18,6 +18,12 @@ app.use(express.static("./uploads"));
 
 app.use("/images/uploads", express.static("./uploads"));
 
+
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.use(express.json());
 
 app.use("/api/v1", routes);
