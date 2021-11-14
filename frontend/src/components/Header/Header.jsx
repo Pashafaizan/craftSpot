@@ -19,6 +19,7 @@ export default function Header(props) {
   const useProducts = useRef(null);
   const [searchState, setSearchState] = useState(false);
   const [menuState, setMenuState] = useState(false);
+  const [productsDropdown, setProductsDropdown] = useState(false);
   const [type, setType] = useState("BAR PRODUCTS & ACCESSORIES");
   useEffect(() => {
     if (searchState) {
@@ -41,6 +42,8 @@ export default function Header(props) {
       document.body.style.touchAction = "auto";
     }
   }, [menuState]);
+
+  
 
   return (
     <>
@@ -136,10 +139,9 @@ export default function Header(props) {
 
           <div className="dropdown">
             <div className="dropbtn" onClick={()=>{
-              useProducts.current.style.display="block";
-              console.log("faizan pahsa")
+              setProductsDropdown(productsDropdown => !productsDropdown)
             }} >
-              Products
+              <span className="dropbtn-child">Products</span>
               <i className="fa fa-caret-down"></i>
             </div>
             <div className="dropdown-content" ref={useProducts}>
@@ -148,6 +150,7 @@ export default function Header(props) {
                   pathname: "/products",
                   state: { type: "BAR PRODUCTS & ACCESSORIES" },
                 }}
+                onClick={()=>{setMenuState(false)}}
               >
                 Bar Products and Accessories
               </Link>
@@ -157,34 +160,46 @@ export default function Header(props) {
                   pathname: "/products",
                   state: { type: "Cutlery and Napkin rings" },
                 }}
+                onClick={()=>{setMenuState(false)}}
               >
                 Cutlery and Napkin rings
               </Link>
               <Link  to={{
                   pathname: "/products",
                   state: { type: "KITCHENWARED" },
-                }}>Kitchenwares</Link>
+                }}
+                onClick={()=>{setMenuState(false)}}
+                >Kitchenwares</Link>
               <Link  to={{
                   pathname: "/products",
                   state: { type: "wooden furnitures<" },
-                }}>wooden furnitures</Link>
+                }}
+                onClick={()=>{setMenuState(false)}}
+                >wooden furnitures</Link>
               <Link  to={{
                   pathname: "/products",
                   state: { type: "COPPERWARE PRODUCTS" },
-                }}>Copperware Products</Link>
+                }}
+                onClick={()=>{setMenuState(false)}}
+                >Copperware Products</Link>
               <Link  to={{
                   pathname: "/products",
                   state: { type: "METAL FURNITURES" },
-                }}>METAL FURNITURES</Link>
+                }}
+                onClick={()=>{setMenuState(false)}}
+                >METAL FURNITURES</Link>
                      <Link  to={{
                   pathname: "/products",
                   state: { type: "MIRRORS & DECORATIVE" },
-                }}>MIRRORS and DECORATIVE</Link>
+                }}
+                onClick={()=>{setMenuState(false)}}
+                >MIRRORS and DECORATIVE</Link>
             </div>
           </div>
           <a  className="outline" href="/exibition" style={{textDecoration:"none"}}>Exhibition</a>   
           <a  className="outline" href="/about" style={{textDecoration:"none"}}> About Us</a>   
           <a href="/contact" style={{textDecoration:"none"}}> Contact</a>
+          
         </div>
       </div>
     </>
