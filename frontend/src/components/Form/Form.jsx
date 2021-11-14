@@ -17,15 +17,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Form() {
-  const [item_name, setName] = useState("1");
-  const [item_price, setPrice] = useState(1);
-  const [item_description, setDescription] = useState("1");
-  const [place_of_origin, setPlaceOfOrigin] = useState("1");
-  const [material, setItemMaterial] = useState("1");
-  const [item_color, setItemColor] = useState("1");
-  const [item_type, setItemType] = useState("1");
-  const [item_weight, setItemWeight] = useState("1");
-  const [item_shape, setItemShape] = useState("1");
+  const [item_name, setName] = useState("");
+  const [item_price, setPrice] = useState();
+  const [item_description, setDescription] = useState("");
+  const [place_of_origin, setPlaceOfOrigin] = useState("");
+  const [material, setItemMaterial] = useState("");
+  const [item_color, setItemColor] = useState("");
+  const [item_type, setItemType] = useState("");
+  const [item_weight, setItemWeight] = useState("");
+  const [item_shape, setItemShape] = useState("");
   const inputRef = useRef(null);
   const [previewImage, setPreviewImage] = useState([]);
   const [files,setFiles] = useState([]);

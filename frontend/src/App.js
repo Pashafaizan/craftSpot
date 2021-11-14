@@ -5,7 +5,7 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
-import Carousel from "../src/components/carousel/Carousel";
+import CarouselSlide from "../src/components/carousel/CarouselSlide";
 import Header from "../src/components/Header/Header";
 import ProductCard from "../src/components/ProductCard/ProductCard";
 import Trending from "../src/components/Trending/Trending";
@@ -23,6 +23,7 @@ import SellerDashboard from "./components/Marchandise/SellerDashboard/SellerDash
 import { useMemo } from "react";
 import About from "./components/About/About";
 import ContactUs from "./components/ContactUs/ContactUs";
+import ReactCarousel from "./components/carousel/ReactCarousel"
 
 function App() {
   const [typeProduct,setTypeProduct]=useState('this');
@@ -45,7 +46,7 @@ function App() {
           <Route exact path="/">
             {/* <Header /> */}
             {HeaderFist}
-            <Carousel />
+            <CarouselSlide />
             <Trending />
             <ProductCard
               topic={"BAR PRODUCTS & ACCESSORIES"}
@@ -56,6 +57,7 @@ function App() {
               status={"METAL FURNITURES"}
             />
             <Footer />
+        
           </Route>
           {/* <Route exact path="/form">
             <Form />
@@ -66,6 +68,10 @@ function App() {
           <Route exact path="/about">
           <Header />
           <About/>
+          <ProductCard
+              topic={"BAR PRODUCTS & ACCESSORIES"}
+              status={"BAR PRODUCTS & ACCESSORIES"}
+            />
           </Route>
 
           <Route exact path="/contact">

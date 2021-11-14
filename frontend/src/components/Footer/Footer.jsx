@@ -10,63 +10,50 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 export default function Footer() {
   return (
     <div className="main-footer">
-      {/* <div className="Container"> */}
-        <div className="row">
-          {/* colomn 1*/}
-          <div className="col">
-            <h3>Cotact us</h3>
-            <ui style={{ listStyle: "none" }}>
-              <li>
-                <LocalPhoneIcon
-                  style={{ fontSize: "1.4rem", width: "0.8em" }}
-                />
-                0591-9586846
-              </li>
-              <li>
-                <LocationOnIcon />
-                Bengaluru City in Karnataka
-              </li>
-              <li>
-                <EmailIcon />
-                therichliving@gmail.com
-              </li>
-            </ui>
-          </div>
-          {/* Column2 */}
-          <div className="col">
-            <h3>Guidance</h3>
-            <ui style={{ listStyle: "none" }}>
-              <li>Privacy Policy</li>
-              <li>Terms & Conditions</li>
-              <li>Contract Agreement</li>
-            </ui>
-          </div>
-          {/* colomn 3*/}
-          <div className="col">
-            <h3>Product Website</h3>
-            <ui style={{ listStyle: "none" }}>
-              <li>m.life</li>
-              <li>315464646</li>
-            </ui>
-          </div>{" "}
-          {/* colomn 4*/}
-          <div className="col">
-            <h3>Follow us</h3>
-            <ui style={{ listStyle: "none", fontSize: "3em" }}>
-              <li className="follow">
-                <YouTubeIcon style={{ fontSize: "0.8em" }} />
-                <FacebookIcon style={{ fontSize: "0.8em" }} />
-                <TwitterIcon style={{ fontSize: "0.8em" }} />
-              </li>
-            </ui>
-          </div>
-        </div>
-        <div className="row2">
-          <p className="col-sm">
-            &copy;{new Date().getFullYear()} All rights reserved | Design by
-            MSAF
-          </p>
-        {/* </div> */}
+      <div className="footer_row">
+      <div className="row1">
+       
+          <h3 style={{margin:10}}>Contact us</h3>
+          <ul style={{ listStyle: "none" }}>
+            <li style={{margin:10}}>
+              <LocalPhoneIcon style={{ fontSize: "1.4rem", width: "0.8em",margin:5 }} />
+              9089149952
+            </li>
+            <li style={{margin:10}}>
+              <LocalPhoneIcon style={{ fontSize: "1.4rem", width: "0.8em",margin:5 }}  />
+              6398667487
+            </li>
+            <li style={{margin:10}}>
+              <LocationOnIcon  style={{margin:5}} />
+              C1/112 Transport Nagar Moradabad Uttar Pradesh India.
+            </li>
+            <li style={{margin:10}}>
+              <EmailIcon  style={{margin:5}} />
+              anaspasha1810@gmail.com
+            </li>
+            <li style={{margin:10}}>
+              <EmailIcon style={{margin:5}}/>
+              faizanpasha10044@gmail.com
+            </li>
+          </ul>
+        
+      </div>
+
+      <div className="row2">
+        <h3>Follow us</h3>
+        <ui style={{ listStyle: "none", fontSize: "3em" }}>
+          <li className="follow">
+            <YouTubeIcon href="" style={{ fontSize: "0.8em",margin:5}} />
+            <FacebookIcon style={{ fontSize: "0.8em",margin:5 }} />
+            <TwitterIcon style={{ fontSize: "0.8em", margin:5 }} />
+          </li>
+        </ui>
+      </div>
+</div>
+      <div className="rowFirst">
+        <p style={{textAlign:"center"}}>
+          &copy;2021 All rights reserved | Design by CraftSpot
+        </p>
       </div>
     </div>
   );

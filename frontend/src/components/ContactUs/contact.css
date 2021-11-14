@@ -1,0 +1,10 @@
+.contact{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    margin:10px;
+    border-radius: 10px;
+    
+}

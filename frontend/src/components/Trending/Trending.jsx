@@ -10,35 +10,42 @@ function Trending() {
     return (
         <div className="trending_container">
             
-            
-            <Link  to={{
+           <h1>Product categories</h1>
+            <div className="trending_produts">
+            <Link style={{ textDecoration: 'none' }}  to={{
                   pathname: "/products",
                   state: { type: "COPPERWARE PRODUCTS" },
                 }} className="container_box">
-                <div className="product_name">Copperware Products</div>
+              
                 <img src={trending1}/>
+                <div className="product_name">Copperware Products</div>
             </Link>
-            <Link  to={{
+      
+            <Link style={{ textDecoration: 'none' }} to={{
                   pathname: "/products",
                   state: { type: "Cutlery and Napkin rings" },
                 }}  className="container_box">
-                <div className="product_name">Cutlery and Napkin rings</div>
+               
                 <img src={trending2}/>
+                <div className="product_name">Napkin rings</div>
             </Link>
-            <Link to={{
+            <Link style={{ textDecoration: 'none' }} to={{
                   pathname: "/products",
                   state: { type: "KITCHENWARED" },
                 }}  className="container_box">
-                <div className="product_name">Kitchenwares</div>
+               
                 <img src={trending3}/>
+                <div className="product_name">Kitchenwares</div>
             </Link>
-            <Link to={{
+            <Link style={{ textDecoration: 'none' }} to={{
                   pathname: "/products",
                   state: { type: "wooden furnitures" },
                 }}  className="container_box">
-                <div className="product_name">wooden furnitures</div>
+               
                 <img src={trending4}/>
+                <div className="product_name">wooden furnitures</div>
             </Link>
+        </div>
         </div>
     )
 }

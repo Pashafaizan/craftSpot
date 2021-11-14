@@ -1,4 +1,4 @@
-.slider {
+/* .slider {
   height: 60vh;
   width: 100%;
   display: flex;
@@ -14,8 +14,7 @@
   height: 60vh;
   overflow  : hidden;
   background-color:black;
-  /* height: 500px; */
-  /* margin-top: inherit; */
+
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,6 +29,33 @@
   .slide, .slider{
     max-height: 250px;
     min-height: 250px;
-    /* margin-top: -110px; */
+    margin-top: -110px;
   }
+} */
+
+.carousel-item img{
+  height:500px
 }
+.carousel{
+  margin-top: 107px;
+ 
+}
+
+@media screen and (max-width: 600px) {
+  .carousel{
+   margin-top:56px
+  }
+
+
+  .carousel-item img{
+    height:300px;
+  }
+} 
+
+@media screen and (max-width: 425px) {
+
+
+  .carousel-item img{
+    height:200px;
+  }
+} 

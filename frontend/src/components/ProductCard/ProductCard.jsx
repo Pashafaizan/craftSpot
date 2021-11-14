@@ -21,18 +21,18 @@ function ProductCard({ topic, status }) {
   }, []);
   return (
     <>
-      <h1
+      <h3
         style={{
           textAlign: "center",
           marginTop: 30,
           fontFamily: "PT Sans Caption",
-          fontSize: 40,
+          
           fontWeight: "lighter",
         }}
       >
         {" "}
         {topic}
-      </h1>
+      </h3>
       <div className="product_container">
         {data.map((e) => {
           return (
