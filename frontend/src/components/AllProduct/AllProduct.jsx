@@ -15,7 +15,7 @@ function AllProduct(props) {
   const {type} = location.state;
   console.log(type);
   useEffect(() => {
-    fetchData("/list", {
+    fetchData("list", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {

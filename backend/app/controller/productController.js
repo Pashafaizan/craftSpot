@@ -32,20 +32,21 @@ const formservice = require("../services/form.service");
 // };
 
 const createForm = async (req, res) => {
-  const data = req.body;
+
 
   console.log("this is request body");
 
   console.log(req.body);
-  formservice.form(data).then((e) => {
+  formservice.form(req.body).then((e) => {
     res.send(e);
   });
 };
 const getList = (req, res) => {
-  const page = parseInt(req.query.page);
-  const limit = parseInt(req.query.limit);
-  console.log(page, limit);
-  formservice.allListItems(page, limit).then((resp) => {
+  // const page = parseInt(req.query.page);
+  // const limit = parseInt(req.query.limit);
+  // console.log(page, limit);
+  console.log("get item")
+  formservice.allListItems().then((resp) => {
     // console.log(resp)
     res.send(resp);
   });

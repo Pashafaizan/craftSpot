@@ -11,7 +11,7 @@ import { fetchData } from "../../middleware/requestHandler";
 function ProductCard({ topic, status }) {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetchData("/list", {
+    fetchData("list", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {
