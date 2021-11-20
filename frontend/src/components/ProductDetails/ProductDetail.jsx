@@ -17,7 +17,7 @@ function ProductDetail() {
   const dispatch = useDispatch();
 
   const { productId } = useParams();
-  const [popUpState,setPopUpState] = useState(false);
+  const [popUpState, setPopUpState] = useState(false);
   const [image, setImage] = useState(false);
   const [imageName, setImageName] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -29,8 +29,9 @@ function ProductDetail() {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((json) => {
+      console.log("this is json images")
       console.log(json);
-      console.log(json.images);
+      // console.log(json.images);
       setProductData(json);
       setImageName(json.images);
       setSingleImage(json.images[0]);
@@ -61,7 +62,7 @@ function ProductDetail() {
             />
             <img
               className="product_img"
-              src={`http://localhost:7860/images/${singleImage}`}
+              src={`${process.env.REACT_APP_API_KEY}/images/${singleImage}`}
             />
           </div>
           <div className="product-right-container">
@@ -73,7 +74,7 @@ function ProductDetail() {
             <div>{productData.material}</div>
             <div className="purchase_btn">
               <button
-              style={{color:'white',backgroundColor:"dodgerblue"}}
+                style={{ color: "white", backgroundColor: "dodgerblue" }}
                 onClick={() => {
                   // let users = JSON.parse(localStorage.getItem("users") || "[]");
                   // let user = {
@@ -102,7 +103,14 @@ function ProductDetail() {
       {/* <h4>Review</h4>
 
       <div className="product-reviews"></div> */}
-      {popUpState && <Popup open={popUpState} setOpen={(state)=>{setPopUpState(state)}}/>}
+      {popUpState && (
+        <Popup
+          open={popUpState}
+          setOpen={(state) => {
+            setPopUpState(state);
+          }}
+        />
+      )}
     </div>
   );
 }

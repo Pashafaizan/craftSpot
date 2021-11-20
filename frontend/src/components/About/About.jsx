@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
     return (
-        <div style={{margin:20, wordSpacing:2}}>
+        <div style={{margin:20,marginTop:120, wordSpacing:2}}>
             
             <p>
           <span style={{fontSize:20,fontWeight:"bolder"}}> Craft Spot </span> is your direct source for various handicrafts products at most competitive prices. We are manufacturing, Supplying and exporting our Handicrafts products to global importers, wholesalers and retailers. Our aim is to attain a leading position in the international market in terms of quality and customer satisfaction. Quality, innovation and customer satisfaction is our priority and maintains our compliance to defined standards in product & performance ensuring that we meet with client's specific requirement.

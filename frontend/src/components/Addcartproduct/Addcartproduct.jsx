@@ -24,7 +24,7 @@ function Addcartproduct({ image, productDetail }) {
           return (
             <>
               <div className="cart_list">
-                <img src={`http://localhost:7860/images/${e.image}`} />
+                <img src={`${process.env.REACT_APP_API_KEY}/images/${e.image}`} />
                 <div className="main_cart">
                   <div className="product_name">{e.name}</div>
                   <div className="product-price">

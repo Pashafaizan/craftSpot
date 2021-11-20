@@ -8,11 +8,10 @@ const form = async (data, uploadData) => {
     message: "Your Data has been submitted",
   };
 };
-const allListItems = async (page, limit) => {
+const allListItems = async () => {
   const listItem = await formModel
     .find()
-    .skip(page * limit)
-    .limit(limit);
+    
   console.log(listItem);
   return listItem;
 };

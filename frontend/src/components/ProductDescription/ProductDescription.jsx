@@ -46,8 +46,7 @@ const useStyles = makeStyles({
 
 export default function ProductDescription({data}) {
   const classes = useStyles();
-  console.log("this is product description");
-  console.log(data);
+
   return (
     <div style={{width:"100%",display:'flex',alignItems:"center",justifyContent:"center"}}>
     <TableContainer component={Paper} >
