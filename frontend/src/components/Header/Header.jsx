@@ -172,7 +172,7 @@ export default function Header(props) {
                 >Kitchenwares</Link>
               <Link  to={{
                   pathname: "/products",
-                  state: { type: "wooden furnitures<" },
+                  state: { type: "wooden furnitures" },
                 }}
                 onClick={()=>{setMenuState(false)}}
                 >wooden furnitures</Link>
