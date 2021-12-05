@@ -29,11 +29,11 @@ const formSchema = new Schema({
   },
   item_color: {
     type: String,
-    required: true,
+ 
   },
   item_type: {
     type: String,
-    required: true,
+  
   },
 
   item_weight: {
@@ -44,8 +44,8 @@ const formSchema = new Schema({
   },
 
   show_type: {
-    type: String,
-    required: true,
+    type: String
+    
   },
  
 });
