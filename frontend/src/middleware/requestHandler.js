@@ -1,6 +1,5 @@
-const proxy = `${process.env.REACT_APP_API_KEY}/api/v1/`;
+const proxy = `${process.env.REACT_APP_API_KEY}/api/v1`;
 // const proxy = "/api/auth"
-
 
 export async function fetchData(path, requestOptions) {
   let response;
