@@ -35,7 +35,8 @@
 }
 
 .container_box:hover{
-  background-color: #0a58ca;
+  background-color: whitesmoke;
+  opacity: 0.8;
 }
 /* .trending_category:hover{
   background-color: red;
