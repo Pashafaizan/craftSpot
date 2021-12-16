@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./carousel.css";
 import cover1 from "../../assets/images/cover1.jpg";
 import cover3 from "../../assets/images/Cover3.JPG";
-import cover2 from "../../assets/images/test1.JPG";
+// import cover2 from "../../assets/images/test1.JPG";
 function CarouselSlide() {
   return (
     <div className="slider">
@@ -35,18 +35,7 @@ height="inherit"
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </Carousel.Caption> */}
   </Carousel.Item>
-  <Carousel.Item interval={5000}>
-    <img
-    height="inherit"
  
-
-
-      className="d-block w-100"
-      src={cover2}
-      alt="Third slide"
-    />
-
-  </Carousel.Item>
 </Carousel>
 </div>
  

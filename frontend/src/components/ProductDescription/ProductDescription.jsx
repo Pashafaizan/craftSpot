@@ -90,7 +90,7 @@ export default function ProductDescription({data}) {
               <StyledTableCell component="th" scope="row">
                Item Color
               </StyledTableCell>
-              <StyledTableCell align="center">{data.item_name}</StyledTableCell>
+              <StyledTableCell align="center">{data.item_color}</StyledTableCell>
             </StyledTableRow>
 
             <StyledTableRow >

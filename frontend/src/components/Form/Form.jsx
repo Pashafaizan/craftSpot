@@ -52,7 +52,8 @@ function Form() {
     setImageName([]);
     setFiles([])
     setPreviewImage([])
-    inputRef.current.value = "";
+    setImages([]);
+    // inputRef.current.value = "";
   };
 
   const classes = useStyles();

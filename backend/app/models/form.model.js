@@ -37,7 +37,7 @@ const formSchema = new Schema({
   },
 
   item_weight: {
-    type: Number,
+    type: String,
   },
   item_shape: {
     type: String,
