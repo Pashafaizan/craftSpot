@@ -15,6 +15,7 @@ textarea:focus, input:focus{
 
 .company-logo {
   margin-left: 10px;
+  cursor: pointer;
 }
 .hide-logo {
   display: inline;

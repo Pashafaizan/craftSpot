@@ -25,7 +25,7 @@ function ProductDetail() {
   const [singleImage, setSingleImage] = useState([]);
   const productitems = useSelector((state) => state);
   useEffect(() => {
-    fetchData(`product?id=${productId}`, {
+    fetchData(`/product?id=${productId}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((json) => {
@@ -62,7 +62,7 @@ function ProductDetail() {
             />
             <img
               className="product_img"
-              src={`${process.env.REACT_APP_API_KEY}/images/${singleImage}`}
+              src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${singleImage}`}
             />
           </div>
           <div className="product-right-container">

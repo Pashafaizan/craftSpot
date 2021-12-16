@@ -6,6 +6,7 @@ const form = async (data, uploadData) => {
   await formData.save();
   return {
     message: "Your Data has been submitted",
+    success: true
   };
 };
 const allListItems = async () => {

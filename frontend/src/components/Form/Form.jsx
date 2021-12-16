@@ -5,7 +5,9 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import MultilineTextFields from "./MultilineTextFields";
 import "./form.css";
+import axios from "axios";
 import { fetchData } from "../../middleware/requestHandler";
+import ImageUploading from 'react-images-uploading';
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -18,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Form() {
   const [item_name, setName] = useState("");
+  const [images,setImages] = React.useState([]);
   const [item_price, setPrice] = useState();
   const [item_description, setDescription] = useState("");
   const [place_of_origin, setPlaceOfOrigin] = useState("");
@@ -131,28 +134,44 @@ function Form() {
     })
   };
 
-  const submitForm = () => {
+  const submitForm = async () => {
 
-    files.forEach((v,i)=>{
-      sendData(v).then(d=>{
-        if(i == files.length - 1) {
-          payload = {
-            ...payload,
-            images: imageName,
-          };
-          fetchData("/form", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          }).then((data) => {
-            console.log("this is");
-          });
-          clearForm();
-        }
-      })
+    // files.forEach((v,i)=>{
+    //   sendData(v).then(d=>{
+    //     if(i == files.length - 1) {
+    //       payload = {
+    //         ...payload,
+    //         images: imageName,
+    //       };
+    //       fetchData("/form", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(payload),
+    //       }).then((data) => {
+    //         console.log("this is");
+    //       });
+    //       clearForm();
+    //     }
+    //   })
+    // })
+
+    var data = new FormData();
+    images.forEach(v=>data.append("photos",v.file))
+    const response = await axios.post(process.env.REACT_APP_API_KEY + '/api/v1/uploadProductImage',data);
+    console.log(response)
+    payload = {
+      ...payload,
+      images:response.data.images
+    }
+    const res = await fetchData("/form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     })
-
-    
+    console.log(res);
+    if(res.success) {
+      clearForm();
+    }
   };
 
   return (
@@ -239,7 +258,7 @@ function Form() {
 
            }} /> */}
 
-          <TextField
+          {/* <TextField
             id="outlined-secondary"
             label="Item Type(Mugs,Mirror...)"
             variant="outlined"
@@ -248,7 +267,7 @@ function Form() {
             onChange={(e) => {
               setItemType(e.target.value);
             }}
-          />
+          /> */}
           {/* <TextField
             id="outlined-secondary"
             label="show type (like top categries, new arrivals.....)"
@@ -267,7 +286,7 @@ function Form() {
 
           <TextField
             id="outlined-secondary"
-            label="tem Weight"
+            label="Item Weight"
             variant="outlined"
             color="primary"
             value={item_weight}
@@ -286,7 +305,7 @@ function Form() {
             }}
           />
 
-          <input
+          {/* <input
             type="file"
             ref={inputRef}
             multiple
@@ -304,7 +323,46 @@ function Form() {
             {previewImage.map((v) => {
               return <img style={{ width: 200, margin: 10 }} src={v}></img>;
             })}
+          </div> */}
+
+<ImageUploading
+        multiple
+        value={images}
+        onChange={(imageList, addUpdateIndex) => {
+          // data for submit
+          console.log(imageList, addUpdateIndex);
+          setImages(imageList);
+        }}
+        maxNumber={4}
+        dataURLKey="data_url"
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageRemove,
+          isDragging,
+          dragProps,
+        }) => (
+          // write your building UI
+          <div className="upload__image-wrapper" style={{border:"1px dashed black"}}>
+            { imageList.length == 0 &&  <div
+              style={isDragging ? { backgroundColor:"whitesmoke",textAlign:'center',cursor:"pointer",padding:"20px" } : {textAlign:'center',cursor:"pointer",padding:"20px"}}
+              onClick={onImageUpload}
+              {...dragProps}
+            >
+              Click or drop here
+            </div>}
+            {imageList.map((image, index) => (
+              <div key={index} className="image-item" style={{textAlign:'center'}}>
+                <img src={image['data_url']} alt="" width="100" />
+                <div className="image-item__btn-wrapper">
+                <Button onClick={() => onImageRemove(index)}>Remove</Button>
+                </div>
+              </div>
+            ))}
           </div>
+        )}
+      </ImageUploading>
 
           <div
             style={{

@@ -18,7 +18,7 @@ function ImageCard(props) {
           >
             {/* {console.log(item)} */}
             <img
-              src={`${process.env.REACT_APP_API_KEY}/images/${item}`}
+              src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${item}`}
               style={{ width: 95 }}
             />
           </div>

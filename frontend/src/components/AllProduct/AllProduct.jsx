@@ -15,7 +15,7 @@ function AllProduct(props) {
   const {type} = location.state;
   console.log(type);
   useEffect(() => {
-    fetchData("list", {
+    fetchData("/list", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {
@@ -30,7 +30,7 @@ function AllProduct(props) {
     
       if(isShown != -1) {
         console.log(data[isShown])
-        imgRef.current[isShown].current.src = `${process.env.REACT_APP_API_KEY}/images/${data[isShown].images[Math.floor(Math.random() * data[isShown].images.length)]}`
+        imgRef.current[isShown].current.src = `${process.env.REACT_APP_API_KEY}/api/v1/images/product/${data[isShown].images[Math.floor(Math.random() * data[isShown].images.length)]}`
       }  
     
     
@@ -52,7 +52,7 @@ function AllProduct(props) {
                 <Link to={`/product/${e._id}`} style={{textDecoration:"none"}} onMouseEnter={() => setIsShown(i)} onMouseLeave={() => setIsShown(-1)}>
                   <div className="product_container_box">
                   
-                    <img src={`${process.env.REACT_APP_API_KEY}${e.images[0]}`} ref={imgRef.current[i]} />
+                    <img src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${e.images[0]}`} ref={imgRef.current[i]} />
 
                     <div className="product_name">  
                       <div>{e.item_name}</div>

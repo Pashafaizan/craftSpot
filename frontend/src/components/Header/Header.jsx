@@ -3,6 +3,7 @@ import { ReactComponent as WhatSvg } from "../../resources/icons/what.svg";
 import { ReactComponent as UserSvg } from "../../resources/icons/user.svg";
 import { ReactComponent as SearchSvg } from "../../resources/icons/search.svg";
 import { ReactComponent as LikeSvg } from "../../resources/icons/like.svg";
+import { useHistory } from "react-router-dom";
 import { ReactComponent as CrossSvg } from "../../resources/icons/cross.svg";
 import { ReactComponent as CompanyLogoSvg } from "../../resources/icons/companylogo.svg";
 import { ReactComponent as SimpleMenuSvg } from "../../resources/icons/Menu.svg";
@@ -19,6 +20,7 @@ export default function Header(props) {
   const useProducts = useRef(null);
   const [searchState, setSearchState] = useState(false);
   const [menuState, setMenuState] = useState(false);
+  const router = useHistory()
   const [productsDropdown, setProductsDropdown] = useState(false);
   const [type, setType] = useState("BAR PRODUCTS & ACCESSORIES");
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function Header(props) {
             >
               <SimpleMenuSvg />{" "}
             </span>
-            <span className="company-logo">
+            <span className="company-logo" onClick={()=>router.push('/')}>
               <CompanyLogoSvg />
             </span>
           </div>
@@ -172,10 +174,10 @@ export default function Header(props) {
                 >Kitchenwares</Link>
               <Link  to={{
                   pathname: "/products",
-                  state: { type: "wooden furnitures" },
+                  state: { type: "WOODEN FURNITURES" },
                 }}
-                onClick={()=>{setMenuState(false)}}
-                >wooden furnitures</Link>
+                onClick={()=>{setMenuState(false);}}
+                >Wooden Furnitures</Link>
               <Link  to={{
                   pathname: "/products",
                   state: { type: "COPPERWARE PRODUCTS" },

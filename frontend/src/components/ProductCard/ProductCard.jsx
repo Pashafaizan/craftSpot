@@ -42,7 +42,7 @@ function ProductCard({ topic, status }) {
                     <div className="product_container_box">
                     
                       <img
-                        src={`${process.env.REACT_APP_API_KEY}/images/${e.images[0]}`}
+                        src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${e.images[0]}`}
                       />
                    
                       <div>{e.item_name}</div>

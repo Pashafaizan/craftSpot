@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const path = require("path");
-
 const cors = require("cors");
 const { connectToMongoDB } = require("./database/db");
 // const Joi = require('joi'); //used for validation
@@ -16,7 +15,7 @@ app.use(cors()); // it enables all cors requests
 
 app.use(express.static("./uploads"));
 
-app.use("/images/uploads", express.static("./uploads"));
+// app.use("/images/uploads", express.static("./uploads"));
 
 app.use(express.json());
 
