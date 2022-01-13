@@ -28,8 +28,8 @@ const currencies = [
     value: 'LANTERNS AND CANDLE HOLDERS',
   },
   {
-    label: 'METAL FURNITURES',
-    value: 'METAL FURNITURES',
+    label: 'METAL ITEMS',
+    value: 'METAL ITEMS',
   },
   {
     label: 'MIRRORS & DECORATIVE',
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '100ch',
+      width: '125ch',
       margin:0,
     },
   },

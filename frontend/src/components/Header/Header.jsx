@@ -5,8 +5,11 @@ import { ReactComponent as SearchSvg } from "../../resources/icons/search.svg";
 import { ReactComponent as LikeSvg } from "../../resources/icons/like.svg";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as CrossSvg } from "../../resources/icons/cross.svg";
-import { ReactComponent as CompanyLogoSvg } from "../../resources/icons/companylogo.svg";
+import { ReactComponent as CompanyLogoSvg } from "../../resources/icons/craftSpotBl.svg";
 import { ReactComponent as SimpleMenuSvg } from "../../resources/icons/Menu.svg";
+import companyLogo from "../../assets/images/craftSpotBl.png"
+import craftLogo from "../../assets/images/craftSpot.png";
+
 
 import "./header.css";
 import { Link } from "react-router-dom";
@@ -78,7 +81,9 @@ export default function Header(props) {
               <SimpleMenuSvg />{" "}
             </span>
             <span className="company-logo" onClick={()=>router.push('/')}>
-              <CompanyLogoSvg />
+              <CompanyLogoSvg style={{height:50,width:100}} />
+             {/* <craftLogo/> */}
+             {/* <img src="../../assets/images/craftSpot.png" alt=""/> */}
             </span>
           </div>
           <div
@@ -186,10 +191,10 @@ export default function Header(props) {
                 >Copperware Products</Link>
               <Link  to={{
                   pathname: "/products",
-                  state: { type: "METAL FURNITURES" },
+                  state: { type: "METAL ITEMS" },
                 }}
                 onClick={()=>{setMenuState(false)}}
-                >METAL FURNITURES</Link>
+                >METAL ITEMS</Link>
                      <Link  to={{
                   pathname: "/products",
                   state: { type: "MIRRORS & DECORATIVE" },

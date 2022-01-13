@@ -179,7 +179,7 @@ const top100Films = [
   { title: 'Dangal', year: 2016 },
   { title: 'The Sting', year: 1973 },
   { title: '2001: A Space Odyssey', year: 1968 },
-  { title: "Singin' in the Rain", year: 1952 },
+{ title: "Singin' in the Rain", year: 1952 },
   { title: 'Toy Story', year: 1995 },
   { title: 'Bicycle Thieves', year: 1948 },
   { title: 'The Kid', year: 1921 },

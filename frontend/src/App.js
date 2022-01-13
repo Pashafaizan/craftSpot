@@ -53,8 +53,8 @@ function App() {
               status={"BAR PRODUCTS & ACCESSORIES"}
             />
             <ProductCard
-              topic={"METAL FURNITURES"}
-              status={"METAL FURNITURES"}
+              topic={"METAL ITEMS"}
+              status={"METAL ITEMS"}
             />
             <Footer />
         

@@ -137,24 +137,7 @@ function Form() {
 
   const submitForm = async () => {
 
-    // files.forEach((v,i)=>{
-    //   sendData(v).then(d=>{
-    //     if(i == files.length - 1) {
-    //       payload = {
-    //         ...payload,
-    //         images: imageName,
-    //       };
-    //       fetchData("/form", {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(payload),
-    //       }).then((data) => {
-    //         console.log("this is");
-    //       });
-    //       clearForm();
-    //     }
-    //   })
-    // })
+
 
     var data = new FormData();
     images.forEach(v=>data.append("photos",v.file))
@@ -180,7 +163,7 @@ function Form() {
       <Container
         className="form_container"
         maxWidth="lg"
-        style={{ margin: "auto", width: "44%", zIndex: 100 }}
+     
       >
         <h3 style={{ textAlign: "center", marginTop: 2, letterSpacing: 2 }}>
           Product Details
@@ -254,31 +237,7 @@ function Form() {
               setItemColor(e.target.value);
             }}
           />
-          {/* <MultilineTextFields setType = {(type)=>{
-               setItemType(type);
-
-           }} /> */}
-
-          {/* <TextField
-            id="outlined-secondary"
-            label="Item Type(Mugs,Mirror...)"
-            variant="outlined"
-            color="primary"
-            value={item_type}
-            onChange={(e) => {
-              setItemType(e.target.value);
-            }}
-          /> */}
-          {/* <TextField
-            id="outlined-secondary"
-            label="show type (like top categries, new arrivals.....)"
-            variant="outlined"
-            color="primary"
-            value={show_type}
-            onChange={(e) => {
-              setType(e.target.value);
-            }}
-          /> */}
+  
           <MultilineTextFields
             setType={(type) => {
               setType(type);
@@ -305,26 +264,7 @@ function Form() {
               setItemShape(e.target.value);
             }}
           />
-
-          {/* <input
-            type="file"
-            ref={inputRef}
-            multiple
-            accept="image/png, image/jpeg"
-            onChange={handleInputSelect}
-          />
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {previewImage.map((v) => {
-              return <img style={{ width: 200, margin: 10 }} src={v}></img>;
-            })}
-          </div> */}
+ 
 
 <ImageUploading
         multiple
