@@ -51,15 +51,7 @@ export default function ProductDescription({data}) {
     <div style={{width:"100%",display:'flex',alignItems:"center",justifyContent:"center"}}>
     <TableContainer component={Paper} >
       <Table className={classes.table} aria-label="customized table">
-        {/* <TableHead>
-          <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-          </TableRow>
-        </TableHead> */}
+ 
         <TableBody>
          
             <StyledTableRow >
@@ -72,7 +64,7 @@ export default function ProductDescription({data}) {
               <StyledTableCell component="th" scope="row">
               Item price
               </StyledTableCell>
-              <StyledTableCell align="center">{data.item_name}</StyledTableCell>
+              <StyledTableCell align="center">Rs.   {data.item_price}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow >
               <StyledTableCell component="th" scope="row">

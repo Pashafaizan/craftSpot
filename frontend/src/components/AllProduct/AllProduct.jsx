@@ -37,16 +37,19 @@ function AllProduct(props) {
 
   },[isShown])
 
-  console.log(data)
+  console.log(props.searchData);
   return (
     <>
        <h1 style={{marginTop:120,marginLeft:40}}>{type}</h1>
     <div className="product_container"> 
  
-      {data.map((e,i) => {
+      {!props.isSearch && data.map((e,i) => {
         return (
           <>
           {console.log(e.show_type)}
+          {console.log(props.isSearch)}
+
+      
           
             {e.show_type==type &&
                 <Link to={`/product/${e._id}`} style={{textDecoration:"none"}} onMouseEnter={() => setIsShown(i)} onMouseLeave={() => setIsShown(-1)}>
@@ -62,10 +65,40 @@ function AllProduct(props) {
                     </div>
                   </div>
                 </Link>
-             }
-          </>
+                
+             }</>
         );
       })}
+
+
+{props.isSearch && props.searchData.map((e,i) => {
+        return (
+          <>
+          {console.log(e.show_type)}
+          {console.log(props.isSearch)}
+
+      
+          
+            {e.show_type==type &&
+                <Link to={`/product/${e._id}`} style={{textDecoration:"none"}} onMouseEnter={() => setIsShown(i)} onMouseLeave={() => setIsShown(-1)}>
+                  <div className="product_container_box">
+                  
+                    <img src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${e.images[0]}`} ref={imgRef.current[i]} />
+
+                    <div className="product_name">  
+                      <div>{e.item_name}</div>
+                      <div id="price">Rs.{e.item_price}</div>
+                       <div id="price">Description : {e.item_description  }</div>
+                       <Rating id="rating" name="half-rating-read" defaultValue={Math.floor(Math.random() *  (4.5 - 2.5 + 1) + 1.5)} precision={0.5} readOnly />
+                    </div>
+                  </div>
+                </Link>
+                
+             }</>
+        );
+      })}
+
+
     </div>
     </>
   );

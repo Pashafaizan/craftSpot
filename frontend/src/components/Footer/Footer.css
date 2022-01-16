@@ -26,6 +26,16 @@ width: fit-content;
   justify-content: center;
 }
 
+.socialIcon{
+  cursor: pointer;
+}
+
+.socialIcon:hover{
+  transform: scale(1.5);
+ 
+}
+
+
 @media screen and (max-width: 625px) {
 
   .footer_row{

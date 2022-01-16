@@ -55,6 +55,7 @@ router.post("/mail", userController.sendMail);
 router.get("/product", userController.getProduct);
 router.post("/user/signup",sellerSignup);
 router.post("/user/login",sellerLogin);
+
 router.post('/uploadProductImage',(req,res,next)=>{
     console.log(req);
     next();

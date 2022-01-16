@@ -76,21 +76,13 @@ function ProductDetail() {
               <button
                 style={{ color: "white", backgroundColor: "dodgerblue" }}
                 onClick={() => {
-                  // let users = JSON.parse(localStorage.getItem("users") || "[]");
-                  // let user = {
-                  //   image: singleImage,
-                  //   name: productData.item_name,
-                  //   price: productData.item_price,
-                  // };
-                  // users.push(user);
-                  // localStorage.setItem("users", JSON.stringify(users));
-                  // history.push("/cart");
+                 
                   setPopUpState(true);
                 }}
               >
                 Send query
               </button>
-              {/* <button>Add To Cart</button> */}
+             
             </div>
           </div>
         </div>
@@ -100,9 +92,7 @@ function ProductDetail() {
         <h3>Product Description</h3>
         <ProductDescription data={productData} />
       </div>
-      {/* <h4>Review</h4>
-
-      <div className="product-reviews"></div> */}
+ 
       {popUpState && (
         <Popup
           open={popUpState}

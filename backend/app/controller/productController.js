@@ -53,8 +53,13 @@ const getList = (req, res) => {
 };
 
 const sendMail = (req, res) => {
-  let mailBody = req.body;
-  formservice.mail(mailBody);
+  // let data = req.body;
+  // console.log(data);
+  console.log("controller sendEmail");
+  formservice.mail().then((msg)=>{
+    res.send(msg)
+  }
+  );
 };
 const getProduct = async (req, res) => {
   let id = req.query.id;

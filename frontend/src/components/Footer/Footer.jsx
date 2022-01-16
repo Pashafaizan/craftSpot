@@ -19,26 +19,28 @@ export default function Footer() {
           <ul style={{ listStyle: "none" }}>
             <li style={{ margin: 10 }}>
               <LocalPhoneIcon
-                style={{ fontSize: "1.4rem", width: "0.8em", margin: 5 }}
+              className="socialIcon"
+                style={{ fontSize: "1.4rem", width: "0.8em", margin: 5,color:"blueviolet" }}
               />
               +919089149952
             </li>
             <li style={{ margin: 10 }}>
               <LocalPhoneIcon
-                style={{ fontSize: "1.4rem", width: "0.8em", margin: 5 }}
+              className="socialIcon"
+                style={{ fontSize: "1.4rem", width: "0.8em", margin: 5,color:"blue" }}
               />
               +916398667487
             </li>
             <li style={{ margin: 10 }}>
-              <LocationOnIcon style={{ margin: 5 }} />
+              <LocationOnIcon className="socialIcon" style={{ margin: 5,color:"green" }} />
               C1/112 Transport Nagar Moradabad Uttar Pradesh India.
             </li>
             <li style={{ margin: 10 }}>
-              <EmailIcon style={{ margin: 5, color: "#B23121" }} />
+              <EmailIcon className="socialIcon" style={{ margin: 5, color: "#B23121" }} />
               anas.pasha@craftspotmarket.com
             </li>
             <li style={{ margin: 10 }}>
-              <EmailIcon style={{ margin: 5, color: "#B23121" }} />
+              <EmailIcon className="socialIcon" style={{ margin: 5, color: "#B23121" }} />
               adeeba.pasha@craftspotmarket.com
             </li>
           </ul>
@@ -56,20 +58,24 @@ export default function Footer() {
           >
             <li className="follow">
               <YouTubeIcon
+              className="socialIcon"
                 href=""
                 style={{ fontSize: "0.8em", margin: 5, color: "	#FF0000" }}
               />
               <FacebookIcon
+              className="socialIcon"
                 style={{ fontSize: "0.8em", margin: 5, color: "#3b5998 " }}
               />
          
               <Link href="https://www.instagram.com/craftspotofficial/">
                 <InstagramIcon
+                className="socialIcon"
                   style={{ fontSize: "0.8em", margin: 5, color: "#bc2a8d" }}
                 />
               </Link>
               <Link href="https://www.linkedin.com/in/craft-spot-473463226/">
                 <LinkedInIcon
+                className="socialIcon"
                   style={{ fontSize: "0.8em", margin: 5, color: " #0e76a8" }}
                 />
               </Link>

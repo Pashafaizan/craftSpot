@@ -27,7 +27,8 @@ import ReactCarousel from "./components/carousel/ReactCarousel"
 
 function App() {
   const [typeProduct,setTypeProduct]=useState('this');
-  
+  const [isSearch,setIsSearch]=React.useState(false);
+  const [searchData,setSearchData]=React.useState([]);
    function productType(type) {
      console.log("this is a product type");
      console.log(typeProduct);
@@ -37,6 +38,20 @@ function App() {
 // const filterData = useMemo((type)=>{
 //   setTypeProduct(type)
 // },[])
+
+const searchItem = (check,data)=>{
+  console.log("this is search item");
+  console.log(check);
+  console.log(data);
+ setIsSearch(check);
+ setSearchData(data);
+}
+React.useEffect(()=>{
+
+
+  
+},[])
+
   const HeaderFist = useMemo(() => {return <Header setProductType={productType}/>})
 
   return (
@@ -80,13 +95,13 @@ function App() {
           </Route>
 
           <Route exact path="/products">
-            {/* <Header/> */}
-            {HeaderFist}
-            <AllProduct typePr={typeProduct}/>
+            <Header searchItem={searchItem}/>
+            {/* {HeaderFist} */}
+            <AllProduct typePr={typeProduct} isSearch={isSearch} searchData={searchData} />
           </Route>
           <Route path="/product/:productId" component={ProductDetail} />
           <Route exact path="/product">
-            <ProductCard />
+            {/* <ProductCard search={isSearch}/> */}
           </Route>
           <Route exact path="/marchandise/login">
             <Login />

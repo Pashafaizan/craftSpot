@@ -6,8 +6,23 @@ import trending2 from "../../resources/icons/50_off.png";
 import fifty_off from "../../resources/icons/trending2.png";
 import { fetchData } from "../../middleware/requestHandler";
 
-function ProductCard({ topic, status }) {
+function ProductCard({ topic, status,isSearch }) {
   const [data, setData] = useState([]);
+
+const SearchData = ()=>{
+  return (
+    <>
+    <h1>tHSI IS SEARCH DATA</h1>
+    </>
+
+  )
+  
+}
+
+
+
+
+
   useEffect(() => {
     fetchData("/list", {
       method: "GET",
@@ -18,7 +33,9 @@ function ProductCard({ topic, status }) {
       setData(data);
     });
   }, []);
+
   return (
+  
     <>
       <h3
         style={{
@@ -61,13 +78,15 @@ function ProductCard({ topic, status }) {
                 
                 </>
               )}
-            </>
-          );
+            </> 
+         
+          )
         })}
        
    
       </div>
     </>
+
   );
 }
 
