@@ -33,7 +33,7 @@ function Form() {
   const [previewImage, setPreviewImage] = useState([]);
   const [files,setFiles] = useState([]);
 
-  const [show_type, setType] = useState("BAR PRODUCTS & ACCESSORIES");
+  const [show_type, setType] = useState("Brass Articles");
 
   const [imageName, setImageName] = useState([]);
 
@@ -48,7 +48,7 @@ function Form() {
     setItemType("");
     setItemWeight("");
     setItemShape("");
-    setType("BAR PRODUCTS & ACCESSORIES");
+    setType("Brass Articles");
     setImageName([]);
     setFiles([])
     setPreviewImage([])

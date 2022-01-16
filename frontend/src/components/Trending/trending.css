@@ -45,7 +45,23 @@
 .product_name {
   font-family: Droid Sans;
   font-style: bold;
-  margin-bottom: 10px;
+  padding: 10px 0px;
+  /* margin-bottom: 10px; */
+}
+a {
+  text-decoration: none;
+}
+.product_name > div {
+width: 100%;
+text-align: center;
+}
+
+#rating {
+  align-self: center;
+}
+
+#price {
+margin: 0px;
 }
 
 @media screen and (max-width: 425px) {
@@ -62,8 +78,15 @@
     padding: 10px;
   }
   .product_name{
+    padding: 5px 0px;
     font-size: 16px;
     font-weight: lighter;
   }
-
+  .product_name > div {
+    width: 100%;
+    text-align: center;
+  }
+  #price {
+    margin: 0px;
+  }
 }

@@ -1,5 +1,5 @@
 const formservice = require("../services/form.service");
-
+const formModel = require("../models/form.model");
 // let name = null;
 // let path = null;
 // let uploadData;
@@ -69,8 +69,19 @@ const getProduct = async (req, res) => {
     res.send(resp);
   });
 };
+
+const topProducts = async (req,res) => {
+  try {
+    const products = await formModel.aggregate([{$sample: {size:8}}])
+    res.json(products)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   //   uploadFile,
+  topProducts,
   createForm,
   getList,
   sendMail,

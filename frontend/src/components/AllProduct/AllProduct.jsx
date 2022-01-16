@@ -5,6 +5,7 @@ import { fetchData } from "../../middleware/requestHandler";
 import Rating from '@mui/material/Rating';
 import "./allproduct.css"
 import {selectedProducts, removeSelectedProducts,setProducts} from "../../redux/action/productAction"
+import Heading from "../Heading/Heading";
 function AllProduct(props) {
   const dispatch = useDispatch();
   console.log(props.typePr);
@@ -13,7 +14,7 @@ function AllProduct(props) {
   const [data, setData] = useState([]);
   const location = useLocation();
   const {type} = location.state;
-  console.log(type);
+  console.log(location);
   useEffect(() => {
     fetchData("/list", {
       method: "GET",
@@ -40,18 +41,21 @@ function AllProduct(props) {
   console.log(props.searchData);
   return (
     <>
-       <h1 style={{marginTop:120,marginLeft:40}}>{type}</h1>
+       {/* <h1 style={{marginTop:120,marginLeft:40}}>{type}</h1> */}
+       <div style={{ padding:'0px 10px'}}>
+       <Heading text={type}/>
+       </div>
     <div className="product_container"> 
  
-      {!props.isSearch && data.map((e,i) => {
+      {data.map((e,i) => {
         return (
           <>
-          {console.log(e.show_type)}
+          {console.log(e.show_type, type)}
           {console.log(props.isSearch)}
 
       
           
-            {e.show_type==type &&
+            {e.show_type==type.replaceAll('and','&') &&
                 <Link to={`/product/${e._id}`} style={{textDecoration:"none"}} onMouseEnter={() => setIsShown(i)} onMouseLeave={() => setIsShown(-1)}>
                   <div className="product_container_box">
                   
@@ -60,7 +64,7 @@ function AllProduct(props) {
                     <div className="product_name">  
                       <div>{e.item_name}</div>
                       <div id="price">Rs.{e.item_price}</div>
-                       <div id="price">Description : {e.item_description  }</div>
+                       {/* <div id="price">Description : {e.item_description  }</div> */}
                        <Rating id="rating" name="half-rating-read" defaultValue={Math.floor(Math.random() *  (4.5 - 2.5 + 1) + 1.5)} precision={0.5} readOnly />
                     </div>
                   </div>
@@ -70,7 +74,7 @@ function AllProduct(props) {
         );
       })}
 
-
+{/* 
 {props.isSearch && props.searchData.map((e,i) => {
         return (
           <>
@@ -96,7 +100,7 @@ function AllProduct(props) {
                 
              }</>
         );
-      })}
+      })} */}
 
 
     </div>

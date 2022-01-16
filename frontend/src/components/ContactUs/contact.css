@@ -1,44 +1,39 @@
-.contact{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: whitesmoke;
-    border: 2px solid black;
-    margin:10px;
-    border-radius: 10px;
-    margin-top:120px ;
     
-}
-.submit_btn{
-    outline: none;
-    border: none;
+#typeName,#typePhone,#typeEmail,#typeMessage {
     margin: 10px;
-    padding: 14px;
-    border: 2px solid black;
-    
-    background-color: white;
-    cursor: pointer;
-    border-radius: 10px;
 }
-.submit_btn:hover{
-opacity: 0.3;
-background-color: black;
-color: white;
+#typeSubmit {
+    /* font-size: small; */
 }
-.contact_border{
-    border-radius: 10px;
-    /* border: 2px solid black;  */
-    padding: 10px;
-    margin: 10px;
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
+.form-outline {
     background-color: white;
 }
 
-.contact_border {
-    font-size: 12px;
+
+.quick-enquiry-form {
+    display: inline-block;
+    width: 500px;
 }
+
+@media only screen and (max-width: 600px) {
+    .quick-enquiry-form {
+        width: 350px;
+    }
+  }
+
+
+@media only screen and (max-width: 450px) {
+.quick-enquiry-form {
+    width: 300px;
+}
+}
+
+@media only screen and (max-width: 350px) {
+.quick-enquiry-form {
+    width: 200px;
+}
+}
+
 @media screen and (max-width: 425px) {
     .contact{
         flex-direction: column;

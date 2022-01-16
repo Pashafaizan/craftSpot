@@ -24,6 +24,8 @@ import { useMemo } from "react";
 import About from "./components/About/About";
 import ContactUs from "./components/ContactUs/ContactUs";
 import ReactCarousel from "./components/carousel/ReactCarousel"
+import TopProducts from "./components/TopProducts/TopProducts";
+import Search from "./components/Search/Search";
 
 function App() {
   const [typeProduct,setTypeProduct]=useState('this');
@@ -52,7 +54,7 @@ React.useEffect(()=>{
   
 },[])
 
-  const HeaderFist = useMemo(() => {return <Header setProductType={productType}/>})
+  const HeaderFist = useMemo(() => {return <Header searchItem={()=>{}} setProductType={productType}/>})
 
   return (
     <>
@@ -63,13 +65,14 @@ React.useEffect(()=>{
             {HeaderFist}
             <CarouselSlide />
             <Trending />
+            <TopProducts />
             <ProductCard
-              topic={"BAR PRODUCTS & ACCESSORIES"}
-              status={"BAR PRODUCTS & ACCESSORIES"}
+              topic={"Cutlery & Napkin Rings"}
+              status={"Cutlery & Napkin Rings"}
             />
             <ProductCard
-              topic={"METAL ITEMS"}
-              status={"METAL ITEMS"}
+              topic={"Metal Articles"}
+              status={"Metal Articles"}
             />
             <Footer />
         
@@ -81,16 +84,13 @@ React.useEffect(()=>{
             <Addcartproduct />
           </Route>
           <Route exact path="/about">
-          <Header />
+          <Header searchItem={()=>{}}/>
           <About/>
-          <ProductCard
-              topic={"BAR PRODUCTS & ACCESSORIES"}
-              status={"BAR PRODUCTS & ACCESSORIES"}
-            />
+          <Footer />
           </Route>
 
           <Route exact path="/contact">
-          <Header />
+          <Header searchItem={()=>{}}/>
           <ContactUs/>
           </Route>
 
@@ -98,6 +98,7 @@ React.useEffect(()=>{
             <Header searchItem={searchItem}/>
             {/* {HeaderFist} */}
             <AllProduct typePr={typeProduct} isSearch={isSearch} searchData={searchData} />
+            <Footer />
           </Route>
           <Route path="/product/:productId" component={ProductDetail} />
           <Route exact path="/product">
@@ -117,6 +118,11 @@ React.useEffect(()=>{
           </Route>
           <Route exact path="/seller/dashboard">
             <SellerDashboard />
+          </Route>
+          <Route exact path="/search/:query">
+            <Header />
+            <Search />
+            <Footer />
           </Route>
         </Switch>
       </Router>

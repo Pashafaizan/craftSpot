@@ -120,7 +120,7 @@ function Login({setToken}) {
           />
         </form>
 
-        <button className="btn" onClick={submitForm}>
+        <button className="btn-login" onClick={submitForm}>
           Login
         </button>
         <div className="signin_div">

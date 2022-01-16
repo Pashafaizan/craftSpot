@@ -249,7 +249,7 @@ function RegisterForm() {
               }}
             />
           </form>
-          <button className="btn" onClick={submitForm}>
+          <button className="btn-login" onClick={submitForm}>
             Submit
           </button>
           <div className="signin_div">

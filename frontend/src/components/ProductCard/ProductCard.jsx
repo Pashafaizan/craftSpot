@@ -5,6 +5,7 @@ import circle from "../../resources/icons/circle.png";
 import trending2 from "../../resources/icons/50_off.png";
 import fifty_off from "../../resources/icons/trending2.png";
 import { fetchData } from "../../middleware/requestHandler";
+import Heading from "../Heading/Heading";
 
 function ProductCard({ topic, status,isSearch }) {
   const [data, setData] = useState([]);
@@ -37,7 +38,7 @@ const SearchData = ()=>{
   return (
   
     <>
-      <h3
+      {/* <h3
         style={{
           textAlign: "center",
           marginTop: 30,
@@ -46,9 +47,11 @@ const SearchData = ()=>{
           fontWeight: "lighter",
         }}
       >
-        {" "}
         {topic}
-      </h3>
+      </h3> */}
+      <div style={{padding:'0px 10px',marginTop:30}}>
+        <Heading text={topic} />
+      </div>
       <div className="product_container">
         {data.map((e) => {
           return (

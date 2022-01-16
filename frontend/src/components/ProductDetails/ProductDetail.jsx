@@ -49,7 +49,7 @@ function ProductDetail() {
   console.log(productData);
   return (
     <div>
-      <Header />
+      <Header searchItem={()=>{}}/>
 
       <div className="product-container">
         <div className="productDetails">

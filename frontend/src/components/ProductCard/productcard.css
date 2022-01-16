@@ -70,7 +70,7 @@ letter-spacing: 2px;
 }
 
 .product_name {
-  padding: 10px;
+  padding: 0px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,7 +122,7 @@ letter-spacing: 2px;
     height: 200px;
   }
   .product_container_box img {
-    width: 127px;
+    /* width: 127px; */
     height: 200px;
     padding: 3px;
   }

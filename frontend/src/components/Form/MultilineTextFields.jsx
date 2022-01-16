@@ -4,44 +4,24 @@ import TextField from '@material-ui/core/TextField';
 
 const currencies = [
   {
-    label: 'BAR PRODUCTS & ACCESSORIES',
-    value: 'BAR PRODUCTS & ACCESSORIES',
+    label: 'Brass Articles',
+    value: 'Brass Articles',
   },
   {
-    label: 'COPPERWARE PRODUCTS',
-    value: 'COPPERWARE PRODUCTS',
+    label: 'Cutlery & Napkin Rings',
+    value: 'Cutlery & Napkin Rings',
   },
   {
-    label: 'CUTLERY & NAPKIN RINGS',
-    value: 'CUTLERY & NAPKIN RINGS',
+    label: 'Metal Articles',
+    value: 'Metal Articles',
   },
   {
-    label: 'KITCHENWARED',
-    value: 'KITCHENWARED',
+    label: 'Wood Craft & Furniture',
+    value: 'Wood Craft & Furniture',
   },
   {
-    label: 'LAMPS & LIGHTING',
-    value: 'LAMPS & LIGHTING',
-  },
-  {
-    label: 'LANTERNS AND CANDLE HOLDERS',
-    value: 'LANTERNS AND CANDLE HOLDERS',
-  },
-  {
-    label: 'METAL ITEMS',
-    value: 'METAL ITEMS',
-  },
-  {
-    label: 'MIRRORS & DECORATIVE',
-    value: 'MIRRORS & DECORATIVE',
-  },
-  {
-    label: 'TABLETOP ITEMS',
-    value: 'TABLETOP ITEMS',
-  },
-  {
-    label: 'WOODEN FURNITURES',
-    value: 'WOODEN FURNITURES',
+    label: 'Glass Articles',
+    value: 'Glass Articles',
   },
 ];
 
