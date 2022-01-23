@@ -57,6 +57,7 @@ router.post("/user/signup",sellerSignup);
 router.post("/user/login",sellerLogin);
 router.get('/topProducts',userController.topProducts);
 
+
 router.post('/uploadProductImage',(req,res,next)=>{
     console.log(req);
     next();

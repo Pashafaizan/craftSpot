@@ -2,14 +2,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  Link,
 } from "react-router-dom";
 import CarouselSlide from "../src/components/carousel/CarouselSlide";
 import Header from "../src/components/Header/Header";
 import ProductCard from "../src/components/ProductCard/ProductCard";
 import Trending from "../src/components/Trending/Trending";
-import ApplinceceSlider from "../src/components/ApplicenceSlider/ApplinceceSlider";
+
 import Banner from "../src/components/Banner/Banner";
 import Footer from "../src/components/Footer/Footer";
 import Form from "../src/components/Form/Form";
@@ -23,10 +21,10 @@ import SellerDashboard from "./components/Marchandise/SellerDashboard/SellerDash
 import { useMemo } from "react";
 import About from "./components/About/About";
 import ContactUs from "./components/ContactUs/ContactUs";
-import ReactCarousel from "./components/carousel/ReactCarousel"
+
 import TopProducts from "./components/TopProducts/TopProducts";
 import Search from "./components/Search/Search";
-
+import QueryForm from "./components/Query/QueryForm";
 function App() {
   const [typeProduct,setTypeProduct]=useState('this');
   const [isSearch,setIsSearch]=React.useState(false);
@@ -37,9 +35,7 @@ function App() {
     setTypeProduct(type)
   
   }
-// const filterData = useMemo((type)=>{
-//   setTypeProduct(type)
-// },[])
+
 
 const searchItem = (check,data)=>{
   console.log("this is search item");
@@ -74,6 +70,7 @@ React.useEffect(()=>{
               topic={"Metal Articles"}
               status={"Metal Articles"}
             />
+              <QueryForm/>
             <Footer />
         
           </Route>
