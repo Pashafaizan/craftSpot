@@ -26,19 +26,9 @@ const productGet = async (id) => {
   return item;
 };
 
-const mail = async (templateParms) => {
-  console.log("this is email");
-  console.log(templateParms);
- const email= await emailjs.send(process.env.ZOHO_SERVICE_ID,process.env.ZOHO_TEMPLATE_ID,templateParms,process.env.ZOHO_USER_ID);
- console.log(email);
- return "this";
- 
-  
-};
 
 module.exports = {
   form,
   productGet,
   allListItems,
-  mail,
 };

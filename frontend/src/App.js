@@ -104,7 +104,7 @@ React.useEffect(()=>{
           <Route exact path="/marchandise/login">
             <Login />
           </Route>
-          <Route exact path="/form">
+          <Route exact path="/Fa@pasha123/form">
             <Form />
           </Route>
           <Route exact path="/product/form">
