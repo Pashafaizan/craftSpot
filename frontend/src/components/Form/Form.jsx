@@ -32,7 +32,7 @@ function Form() {
   const inputRef = useRef(null);
   const [previewImage, setPreviewImage] = useState([]);
   const [files,setFiles] = useState([]);
-
+  const [requestProcessed,setRequestProcessed] = useState(true);
   const [show_type, setType] = useState("Brass Articles");
 
   const [imageName, setImageName] = useState([]);
@@ -138,6 +138,7 @@ function Form() {
   const submitForm = async () => {
 
 
+    setRequestProcessed(false)
 
     var data = new FormData();
     images.forEach(v=>data.append("photos",v.file))
@@ -153,6 +154,7 @@ function Form() {
       body: JSON.stringify(payload),
     })
     console.log(res);
+    setRequestProcessed(true)
     if(res.success) {
       clearForm();
     }
@@ -317,6 +319,7 @@ function Form() {
               variant="contained"
               color="primary"
               onClick={submitForm}
+              disabled={!requestProcessed}
               value="submit"
             >
               Submit
