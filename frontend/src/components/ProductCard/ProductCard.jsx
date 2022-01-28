@@ -10,15 +10,6 @@ import Heading from "../Heading/Heading";
 function ProductCard({ topic, status,isSearch }) {
   const [data, setData] = useState([]);
 
-const SearchData = ()=>{
-  return (
-    <>
-    <h1>tHSI IS SEARCH DATA</h1>
-    </>
-
-  )
-  
-}
 
 
 

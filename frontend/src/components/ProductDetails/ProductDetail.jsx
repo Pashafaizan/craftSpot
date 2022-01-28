@@ -24,6 +24,7 @@ function ProductDetail() {
 
   const [singleImage, setSingleImage] = useState([]);
   const productitems = useSelector((state) => state);
+  // const [form,setForm] = useState({to_name:'CraftSpot',from_email:'',phone_number:'',message:'',product_name:'General'});
   useEffect(() => {
     fetchData(`/product?id=${productId}`, {
       method: "GET",
@@ -31,14 +32,12 @@ function ProductDetail() {
     }).then((json) => {
       console.log("this is json images")
       console.log(json);
-      // console.log(json.images);
+  
       setProductData(json);
       setImageName(json.images);
       setSingleImage(json.images[0]);
 
-      //   dispatch(selectedProducts(json));
-
-      // setProduct(data);
+ 
     });
   }, []);
   const payload = [
@@ -99,6 +98,7 @@ function ProductDetail() {
           setOpen={(state) => {
             setPopUpState(state);
           }}
+          data={productData}
         />
       )}
     </div>
