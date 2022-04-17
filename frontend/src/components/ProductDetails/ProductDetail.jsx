@@ -11,6 +11,7 @@ import ImageCard from "../ImageCard/ImageCard";
 import Addcartproduct from "../Addcartproduct/Addcartproduct";
 import { useHistory } from "react-router-dom";
 import Popup from "../Popup/Popup";
+import Footer from "../Footer/Footer"
 
 function ProductDetail() {
   let history = useHistory();
@@ -24,7 +25,7 @@ function ProductDetail() {
 
   const [singleImage, setSingleImage] = useState([]);
   const productitems = useSelector((state) => state);
-  // const [form,setForm] = useState({to_name:'CraftSpot',from_email:'',phone_number:'',message:'',product_name:'General'});
+ 
   useEffect(() => {
     fetchData(`/product?id=${productId}`, {
       method: "GET",
@@ -63,34 +64,34 @@ function ProductDetail() {
               className="product_img"
               src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${singleImage}`}
             />
+            
           </div>
           <div className="product-right-container">
-            <div className="product_name">{productData.item_name}</div>
-            <div className="product-price">
-              <strong>Rs. </strong> <span>{productData.item_price}</span>
-            </div>
-            <div>Availability</div>
-            <div>{productData.material}</div>
+           
+             <ProductDescription data={productData} />
             <div className="purchase_btn">
               <button
-                style={{ color: "white", backgroundColor: "dodgerblue" }}
+               
                 onClick={() => {
                  
                   setPopUpState(true);
                 }}
               >
-                Send query
+                Send Query
               </button>
              
             </div>
           </div>
         </div>
       </div>
+     
+     <div className="description">
+       <h4>Description</h4>
+    {productData.item_description}
+     </div>
+     < Footer/>
 
-      <div className="product-description">
-        <h3>Product Description</h3>
-        <ProductDescription data={productData} />
-      </div>
+  
  
       {popUpState && (
         <Popup

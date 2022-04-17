@@ -61,14 +61,14 @@ React.useEffect(()=>{
             {HeaderFist}
             <CarouselSlide />
             <Trending />
-            <TopProducts />
+            {/* <TopProducts /> */}
             <ProductCard
-              topic={"Cutlery & Napkin Rings"}
-              status={"Cutlery & Napkin Rings"}
+              topic={"Home Decor"}
+              status={"Home Decor"}
             />
             <ProductCard
-              topic={"Metal Articles"}
-              status={"Metal Articles"}
+              topic={"kitchenware & Bar"}
+              status={"kitchenware & Bar"}
             />
               <QueryForm/>
             <Footer />

@@ -29,25 +29,17 @@ function ProductCard({ topic, status,isSearch }) {
   return (
   
     <>
-      {/* <h3
-        style={{
-          textAlign: "center",
-          marginTop: 30,
-          fontFamily: "PT Sans Caption",
-          
-          fontWeight: "lighter",
-        }}
-      >
-        {topic}
-      </h3> */}
+
       <div style={{padding:'0px 10px',marginTop:30}}>
         <Heading text={topic} />
       </div>
       <div className="product_container">
         {data.map((e) => {
+          console.log(e.categories,"categories");
+          console.log(status,"status")
           return (
             <>
-              {e.show_type === status && (
+              {e.categories === status && (
                 <>
                   
                     <div className="product_container_box">
@@ -57,9 +49,7 @@ function ProductCard({ topic, status,isSearch }) {
                       />
                    
                       <div>{e.item_name}</div>
-                      <div className="product_name">
-                        Rs. {e.item_price}
-                      </div>
+                
                       <Link to={`/product/${e._id}`}>
                      
                       <button className="btn_details"><span>Details</span></button>

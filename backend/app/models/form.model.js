@@ -6,10 +6,6 @@ const formSchema = new Schema({
     type: String,
     required: true,
   },
-  item_price: {
-    type: Number,
-    required: true,
-  },
   item_description: {
     type: String,
   },
@@ -18,10 +14,6 @@ const formSchema = new Schema({
     type: [],
   },
 
-  place_of_origin: {
-    type: String,
-    required: true,
-  },
 
   material: {
     type: String,
@@ -31,22 +23,16 @@ const formSchema = new Schema({
     type: String,
  
   },
-  item_type: {
-    type: String,
+  item_weight: {},
   
-  },
-
-  item_weight: {
-    type: String,
-  },
   item_shape: {
     type: String,
   },
-
-  show_type: {
-    type: String
-    
+  
+  categories:{
+    type:String
   },
+  item_dimensions:{}
  
 });
 

@@ -41,7 +41,7 @@ function AllProduct(props) {
   console.log(props.searchData);
   return (
     <>
-       {/* <h1 style={{marginTop:120,marginLeft:40}}>{type}</h1> */}
+    
        <div style={{ padding:'0px 10px'}}>
        <Heading text={type}/>
        </div>
@@ -50,12 +50,10 @@ function AllProduct(props) {
       {data.map((e,i) => {
         return (
           <>
-          {console.log(e.show_type, type)}
-          {console.log(props.isSearch)}
-
+       
       
           
-            {e.show_type==type.replaceAll('and','&') &&
+            {e.categories==type.replaceAll('and','&') &&
                 <Link to={`/product/${e._id}`} style={{textDecoration:"none"}} onMouseEnter={() => setIsShown(i)} onMouseLeave={() => setIsShown(-1)}>
                   <div className="product_container_box">
                   
@@ -63,9 +61,9 @@ function AllProduct(props) {
 
                     <div className="product_name">  
                       <div>{e.item_name}</div>
-                      <div id="price">Rs.{e.item_price}</div>
+                      {/* <div id="price">Rs.{e.item_price}</div> */}
                        {/* <div id="price">Description : {e.item_description  }</div> */}
-                       <Rating id="rating" name="half-rating-read" defaultValue={Math.floor(Math.random() *  (4.5 - 2.5 + 1) + 1.5)} precision={0.5} readOnly />
+                       {/* <Rating id="rating" name="half-rating-read" defaultValue={Math.floor(Math.random() *  (4.5 - 2.5 + 1) + 1.5)} precision={0.5} readOnly /> */}
                     </div>
                   </div>
                 </Link>

@@ -43,19 +43,29 @@
   z-index: 1000;
 } */
 .product_name {
-  font-family: Droid Sans;
-  font-style: bold;
-  padding: 10px 0px;
-  /* margin-bottom: 10px; */
+  padding: 0px 10px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100%;
+  flex-direction: column;
+  color: black;
+  font-weight: bold;
+
 }
 a {
   text-decoration: none;
 }
 .product_name > div {
 width: 100%;
+/* text-align: center; */
+text-transform: capitalize; 
+padding: 10px;
 text-align: center;
 }
-
+.product_material{
+  text-transform: capitalize; 
+}
 #rating {
   align-self: center;
 }
@@ -63,6 +73,8 @@ text-align: center;
 #price {
 margin: 0px;
 }
+
+
 
 @media screen and (max-width: 425px) {
   .container_box {

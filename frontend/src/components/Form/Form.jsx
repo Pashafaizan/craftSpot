@@ -7,7 +7,12 @@ import MultilineTextFields from "./MultilineTextFields";
 import "./form.css";
 import axios from "axios";
 import { fetchData } from "../../middleware/requestHandler";
-import ImageUploading from 'react-images-uploading';
+import ImageUploading from "react-images-uploading";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -20,58 +25,59 @@ const useStyles = makeStyles((theme) => ({
 
 function Form() {
   const [item_name, setName] = useState("");
-  const [images,setImages] = React.useState([]);
-  const [item_price, setPrice] = useState();
+  const [images, setImages] = React.useState([]);
+
   const [item_description, setDescription] = useState("");
-  const [place_of_origin, setPlaceOfOrigin] = useState("");
+ 
   const [material, setItemMaterial] = useState("");
   const [item_color, setItemColor] = useState("");
-  const [item_type, setItemType] = useState("");
-  const [item_weight, setItemWeight] = useState("");
+ 
+  const [item_weight, setItemWeight] = useState({ weight: "", unit: "" });
   const [item_shape, setItemShape] = useState("");
   const inputRef = useRef(null);
   const [previewImage, setPreviewImage] = useState([]);
-  const [files,setFiles] = useState([]);
-  const [requestProcessed,setRequestProcessed] = useState(true);
-  const [show_type, setType] = useState("Brass Articles");
-
+  const [files, setFiles] = useState([]);
+  const [requestProcessed, setRequestProcessed] = useState(true);
+  const [categories, setCategories] = useState("Home Accessories");
+  const [item_dimensions, setDimensions] = useState({
+    length: "",
+    breadth: "",
+    height: "",
+    unit: "",
+  });
   const [imageName, setImageName] = useState([]);
+
+
+
 
   const clearForm = () => {
     console.log("This is clear form");
     setName("");
-    setPrice("");
+     
     setDescription("");
-    setPlaceOfOrigin("");
     setItemMaterial("");
     setItemColor("");
-    setItemType("");
-    setItemWeight("");
+    setItemWeight({});
     setItemShape("");
-    setType("Brass Articles");
+    setCategories("Home Accessories");
     setImageName([]);
-    setFiles([])
-    setPreviewImage([])
+    setFiles([]);
+    setPreviewImage([]);
     setImages([]);
+    setDimensions({});
     // inputRef.current.value = "";
   };
 
   const classes = useStyles();
   let payload = {
     item_name,
-    item_price,
-
-    item_description,
-
-    place_of_origin,
-    material,
+     item_description,
+     material,
     item_color,
-    item_type,
-
     item_weight,
     item_shape,
-
-    show_type,
+    item_dimensions,
+    categories,
   };
   const validateData = (payload) => {
     let result = {
@@ -90,7 +96,10 @@ function Form() {
       result.message = "Please enter description";
       result.status = false;
     }
-
+    if(item_dimensions.unit==""){
+      result.message = "Please enter item";
+      result.status = false;
+    }
     return result;
   };
 
@@ -101,9 +110,9 @@ function Form() {
       inputRef.current.value = "";
       return;
     }
-    console.log(e.target.files[0]);
+
     Object.entries(e.target.files).map((file) => {
-      setFiles((f) => [...f,file[1]]);
+      setFiles((f) => [...f, file[1]]);
       var oFReader = new FileReader();
       oFReader.readAsDataURL(file[1]);
       oFReader.onload = (OFEvent) => {
@@ -115,58 +124,63 @@ function Form() {
     });
   };
 
-  const sendData =  (file) => {
-    return new Promise((resolve,reject)=>{
+  const sendData = (file) => {
+    return new Promise((resolve, reject) => {
       var formData = new FormData();
       formData.append("fileUploaded", file);
-  
+
       let requestOptions = {
         method: "POST",
         body: formData,
       };
-  
-      fetchData("/upload", requestOptions).then((data) => {
-        setImageName((e) => {console.log(e,"MOHAMMAD"); e.push(data.filename); return e;});
-        console.log(imageName)
-        resolve();
-      }).catch(()=>{
-        reject();
-      });
-    })
+
+      fetchData("/upload", requestOptions)
+        .then((data) => {
+          setImageName((e) => {
+            e.push(data.filename);
+            return e;
+          });
+          console.log(imageName);
+          resolve();
+        })
+        .catch(() => {
+          reject();
+        });
+    });
   };
 
   const submitForm = async () => {
-
-
-    setRequestProcessed(false)
+    console.log("submit form");
+    console.log(payload);
+   
+    setRequestProcessed(false);
 
     var data = new FormData();
-    images.forEach(v=>data.append("photos",v.file))
-    const response = await axios.post(process.env.REACT_APP_API_KEY + '/api/v1/uploadProductImage',data);
-    console.log(response)
+    images.forEach((v) => data.append("photos", v.file));
+    const response = await axios.post(
+      process.env.REACT_APP_API_KEY + "/api/v1/uploadProductImage",
+      data
+    );
+
     payload = {
       ...payload,
-      images:response.data.images
-    }
+      images: response.data.images,
+    };
     const res = await fetchData("/form", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-    })
+    });
     console.log(res);
-    setRequestProcessed(true)
-    if(res.success) {
+    setRequestProcessed(true);
+    if (res.success) {
       clearForm();
     }
   };
 
   return (
     <>
-      <Container
-        className="form_container"
-        maxWidth="lg"
-     
-      >
+      <Container className="form_container" maxWidth="lg">
         <h3 style={{ textAlign: "center", marginTop: 2, letterSpacing: 2 }}>
           Product Details
         </h3>
@@ -179,7 +193,7 @@ function Form() {
         >
           <TextField
             id="outlined-secondary"
-            label="Name of Items"
+            label="Name"
             variant="outlined"
             value={item_name}
             color="primary"
@@ -187,38 +201,7 @@ function Form() {
               setName(e.target.value);
             }}
           />
-          <TextField
-            id="outlined-secondary"
-            label="Price of Items"
-            variant="outlined"
-            color="primary"
-            value={item_price}
-            onChange={(e) => {
-              setPrice(e.target.value);
-            }}
-          />
 
-          <TextField
-            id="outlined-secondary"
-            label="Description of Model"
-            variant="outlined"
-            color="primary"
-            value={item_description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          />
-
-          <TextField
-            id="outlined-secondary"
-            label="Place Of origin"
-            value={place_of_origin}
-            variant="outlined"
-            color="primary"
-            onChange={(e) => {
-              setPlaceOfOrigin(e.target.value);
-            }}
-          />
           <TextField
             id="outlined-secondary"
             label="Material"
@@ -231,7 +214,7 @@ function Form() {
           />
           <TextField
             id="outlined-secondary"
-            label="Item Color"
+            label="Color"
             variant="outlined"
             color="primary"
             value={item_color}
@@ -239,26 +222,16 @@ function Form() {
               setItemColor(e.target.value);
             }}
           />
-  
+
           <MultilineTextFields
             setType={(type) => {
-              setType(type);
+              setCategories(type);
             }}
           />
 
           <TextField
             id="outlined-secondary"
-            label="Item Weight"
-            variant="outlined"
-            color="primary"
-            value={item_weight}
-            onChange={(e) => {
-              setItemWeight(e.target.value);
-            }}
-          />
-          <TextField
-            id="outlined-secondary"
-            label="Item Shape"
+            label="Shape"
             variant="outlined"
             value={item_shape}
             color="primary"
@@ -266,46 +239,175 @@ function Form() {
               setItemShape(e.target.value);
             }}
           />
- 
-
-<ImageUploading
-        multiple
-        value={images}
-        onChange={(imageList, addUpdateIndex) => {
-          // data for submit
-          console.log(imageList, addUpdateIndex);
-          setImages(imageList);
-        }}
-        maxNumber={4}
-        dataURLKey="data_url"
-      >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemove,
-          isDragging,
-          dragProps,
-        }) => (
-          // write your building UI
-          <div className="upload__image-wrapper" style={{border:"1px dashed black"}}>
-            { imageList.length == 0 &&  <div
-              style={isDragging ? { backgroundColor:"whitesmoke",textAlign:'center',cursor:"pointer",padding:"20px" } : {textAlign:'center',cursor:"pointer",padding:"20px"}}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Click or drop here
-            </div>}
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item" style={{textAlign:'center'}}>
-                <img src={image['data_url']} alt="" width="100" />
-                <div className="image-item__btn-wrapper">
-                <Button onClick={() => onImageRemove(index)}>Remove</Button>
-                </div>
-              </div>
-            ))}
+        
+          <TextField
+            id="outlined-secondary"
+            label="Description"
+            variant="outlined"
+            color="primary"
+            value={item_description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              width: "99%",
+              justifyContent: "space-between",
+            }}
+          >
+            <TextField
+              style={{ width: "89%" }}
+              id="outlined-secondary"
+              label="Weight"
+              variant="outlined"
+              color="primary"
+              value={item_weight.weight}
+              onChange={(e) => {
+                setItemWeight({ ...item_weight, weight: e.target.value });
+              }}
+            />
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Unit</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={item_weight.unit}
+                  label="Unit"
+                  onChange={(e) => {
+                    setItemWeight({ ...item_weight, unit: e.target.value });
+                  }}
+                >
+                  <MenuItem value="mg">mg</MenuItem>
+                  <MenuItem value="gg">gm</MenuItem>
+                  <MenuItem value="kg">kg</MenuItem>
+                  <MenuItem value="liter">liter</MenuItem>
+                  <MenuItem value="ml">ml</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
           </div>
-        )}
-      </ImageUploading>
+          <div
+            style={{
+              display: "flex",
+              width: "99%",
+              justifyContent: "space-between",
+            }}
+          >
+            <TextField
+              id="outlined-secondary"
+              label="Length"
+              variant="outlined"
+              color="primary"
+              value={item_dimensions.length}
+              onChange={(e) => {
+                setDimensions({ ...item_dimensions, length: e.target.value });
+              }}
+            />
+            <TextField
+              id="outlined-secondary"
+              label="Breadth"
+              variant="outlined"
+              color="primary"
+              value={item_dimensions.breadth}
+              onChange={(e) => {
+                setDimensions({ ...item_dimensions, breadth: e.target.value });
+              }}
+            />
+            <TextField
+              id="outlined-secondary"
+              label="Height"
+              variant="outlined"
+              color="primary"
+              value={item_dimensions.height}
+              onChange={(e) => {
+                setDimensions({ ...item_dimensions, height: e.target.value });
+              }}
+            />
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Unit</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={item_dimensions.unit}
+                  label="Unit"
+                  onChange={(e) => {
+                    setDimensions({ ...item_dimensions, unit: e.target.value });
+                  }}
+                >
+                  <MenuItem value="mm">mm</MenuItem>
+                  <MenuItem value="cm">cm</MenuItem>
+                  <MenuItem value="m">m</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+          </div>
+
+          <ImageUploading
+            multiple
+            value={images}
+            onChange={(imageList, addUpdateIndex) => {
+              // data for submit
+              console.log(imageList, addUpdateIndex);
+              setImages(imageList);
+            }}
+            maxNumber={4}
+            dataURLKey="data_url"
+          >
+            {({
+              imageList,
+              onImageUpload,
+              onImageRemove,
+              isDragging,
+              dragProps,
+            }) => (
+              // write your building UI
+              <div
+                className="upload__image-wrapper"
+                style={{ border: "1px dashed black" }}
+              >
+                {imageList.length == 0 && (
+                  <div
+                    style={
+                      isDragging
+                        ? {
+                            backgroundColor: "whitesmoke",
+                            textAlign: "center",
+                            cursor: "pointer",
+                            padding: "20px",
+                          }
+                        : {
+                            textAlign: "center",
+                            cursor: "pointer",
+                            padding: "20px",
+                          }
+                    }
+                    onClick={onImageUpload}
+                    {...dragProps}
+                  >
+                    Click or drop here
+                  </div>
+                )}
+                {imageList.map((image, index) => (
+                  <div
+                    key={index}
+                    className="image-item"
+                    style={{ textAlign: "center" }}
+                  >
+                    <img src={image["data_url"]} alt="" width="100" />
+                    <div className="image-item__btn-wrapper">
+                      <Button onClick={() => onImageRemove(index)}>
+                        Remove
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </ImageUploading>
 
           <div
             style={{

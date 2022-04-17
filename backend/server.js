@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const path = require("path");
+  const path = require("path");
 const cors = require("cors");
 const { connectToMongoDB } = require("./database/db");
 // const Joi = require('joi'); //used for validation
@@ -30,3 +30,6 @@ app.get("/*", function (req, res) {
 app.listen(7860, () => {
   console.log("your server has been started");
 });
+
+
+// REACT_APP_API_KEY = https://craftspotmarket.com

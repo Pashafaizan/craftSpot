@@ -36,7 +36,7 @@ const uploadProductImage = async (req,res) => {
             });
         }
         if(req.files===undefined) {
-            console.log("No file selected");
+            
             return res.json("No file selected")
         }
         console.log("SUCCESS");
@@ -58,11 +58,10 @@ router.get('/topProducts',userController.topProducts);
 
 
 router.post('/uploadProductImage',(req,res,next)=>{
-    console.log(req);
+    
     next();
 },uploadProductImage,(req,res)=>{
-    console.log(req.file)
-    return res.json({name:req.file.key});
+     return res.json({name:req.file.key});
 })
 
 router.get("/images/product/:key", (req, res) => {

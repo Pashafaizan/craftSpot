@@ -4,25 +4,34 @@ import TextField from '@material-ui/core/TextField';
 
 const currencies = [
   {
-    label: 'Brass Articles',
-    value: 'Brass Articles',
+    label: 'Home Accessories',
+    value: 'Home Accessories',
   },
   {
-    label: 'Cutlery & Napkin Rings',
-    value: 'Cutlery & Napkin Rings',
+    label: 'Furniture',
+    value: 'Furniture',
   },
   {
-    label: 'Metal Articles',
-    value: 'Metal Articles',
+    label: 'Kitchen & Bar',
+    value: 'Kitchen & Bar',
   },
   {
-    label: 'Wood Craft & Furniture',
-    value: 'Wood Craft & Furniture',
+    label: 'Decorative Hardware',
+    value: 'Decorative Hardware',
   },
   {
-    label: 'Glass Articles',
-    value: 'Glass Articles',
+    label: 'Garden',
+    value: 'Garden',
   },
+    {
+    label: 'Pets',
+    value: 'Pets',
+  },
+    {
+    label: 'Home Decor',
+    value: 'Home Decor'
+  },
+
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -51,7 +60,7 @@ export default function MultilineTextFields(props) {
         <TextField
           id="outlined-select-currency-native"
           select
-          label="type"
+          label="Categories"
           value={currency}
           onChange={handleChange}
           SelectProps={{
