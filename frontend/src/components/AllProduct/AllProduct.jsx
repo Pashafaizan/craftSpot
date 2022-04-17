@@ -8,20 +8,20 @@ import {selectedProducts, removeSelectedProducts,setProducts} from "../../redux/
 import Heading from "../Heading/Heading";
 function AllProduct(props) {
   const dispatch = useDispatch();
-  console.log(props.typePr);
+  
   const imgRef =  React.useRef([...new Array(26)].map(() => React.createRef()));
   const [isShown, setIsShown] = useState(-1);
   const [data, setData] = useState([]);
   const location = useLocation();
   const {type} = location.state;
-  console.log(location);
+ 
   useEffect(() => {
     fetchData("/list", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {
       dispatch(setProducts(data))
-      console.log(data);
+   
       setData(data);
     });
   }, []);
@@ -30,7 +30,7 @@ function AllProduct(props) {
     
     
       if(isShown != -1) {
-        console.log(data[isShown])
+         
         imgRef.current[isShown].current.src = `${process.env.REACT_APP_API_KEY}/api/v1/images/product/${data[isShown].images[Math.floor(Math.random() * data[isShown].images.length)]}`
       }  
     
@@ -38,7 +38,7 @@ function AllProduct(props) {
 
   },[isShown])
 
-  console.log(props.searchData);
+  
   return (
     <>
     
@@ -61,9 +61,7 @@ function AllProduct(props) {
 
                     <div className="product_name">  
                       <div>{e.item_name}</div>
-                      {/* <div id="price">Rs.{e.item_price}</div> */}
-                       {/* <div id="price">Description : {e.item_description  }</div> */}
-                       {/* <Rating id="rating" name="half-rating-read" defaultValue={Math.floor(Math.random() *  (4.5 - 2.5 + 1) + 1.5)} precision={0.5} readOnly /> */}
+                   
                     </div>
                   </div>
                 </Link>
@@ -71,35 +69,6 @@ function AllProduct(props) {
              }</>
         );
       })}
-
-{/* 
-{props.isSearch && props.searchData.map((e,i) => {
-        return (
-          <>
-          {console.log(e.show_type)}
-          {console.log(props.isSearch)}
-
-      
-          
-            {e.show_type==type &&
-                <Link to={`/product/${e._id}`} style={{textDecoration:"none"}} onMouseEnter={() => setIsShown(i)} onMouseLeave={() => setIsShown(-1)}>
-                  <div className="product_container_box">
-                  
-                    <img src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${e.images[0]}`} ref={imgRef.current[i]} />
-
-                    <div className="product_name">  
-                      <div>{e.item_name}</div>
-                      <div id="price">Rs.{e.item_price}</div>
-                       <div id="price">Description : {e.item_description  }</div>
-                       <Rating id="rating" name="half-rating-read" defaultValue={Math.floor(Math.random() *  (4.5 - 2.5 + 1) + 1.5)} precision={0.5} readOnly />
-                    </div>
-                  </div>
-                </Link>
-                
-             }</>
-        );
-      })} */}
-
 
     </div>
     </>

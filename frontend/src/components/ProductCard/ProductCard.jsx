@@ -20,8 +20,7 @@ function ProductCard({ topic, status,isSearch }) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {
-      console.log('data here')
-      console.log(data);
+ 
       setData(data);
     });
   }, []);
@@ -35,8 +34,7 @@ function ProductCard({ topic, status,isSearch }) {
       </div>
       <div className="product_container">
         {data.map((e) => {
-          console.log(e.categories,"categories");
-          console.log(status,"status")
+       
           return (
             <>
               {e.categories === status && (

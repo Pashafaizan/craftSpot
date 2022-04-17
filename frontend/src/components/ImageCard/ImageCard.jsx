@@ -7,7 +7,7 @@ function ImageCard(props) {
     <div className="image_container">
     
       {props.image.map((item, index) => {
-        console.log(item, index);
+       
         return (
           <div
             className="image_box"
@@ -16,7 +16,7 @@ function ImageCard(props) {
               props.callback(item, true);
             }}
           >
-            {/* {console.log(item)} */}
+           
             <img
               src={`${process.env.REACT_APP_API_KEY}/api/v1/images/product/${item}`}
               style={{ width: 95 }}

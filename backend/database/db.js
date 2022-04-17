@@ -7,9 +7,9 @@ exports.connectToMongoDB = async () => {
       useCreateIndex: true,
       useFindAndModify: false,
     });
-    console.log("Connected to MongoDB...");
+    
   } catch (err) {
-    console.log(err.message);
+    
     process.exit(1);
   }
 };

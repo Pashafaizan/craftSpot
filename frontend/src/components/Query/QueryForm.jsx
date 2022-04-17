@@ -24,7 +24,7 @@ export default function QueryForm() {
             return;
         }
         const result = await emailjs.send('service_leidpu2','template_h182xeq',form,'user_VWrjijknuIHuAqgNg6Sma')
-        console.log(result);
+        
         setForm({to_name:'CraftSpot',from_email:'',phone_number:'',message:'',product_name:'General'});
     }
   return <>

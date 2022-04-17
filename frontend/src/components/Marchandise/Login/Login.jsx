@@ -68,21 +68,20 @@ function Login({setToken}) {
         body:JSON.stringify(payload),
       }).then((res) => {
         
-          console.log(res);
+         
           if(res.message=="Login successfully"){
             localStorage.setItem('access_token',res.access_token);
             localStorage.setItem('refresh_token',res.refresh_token);
             localStorage.setItem('user',JSON.stringify(res.user));
-            // setToken(localStorage.getItem("access_token"));
+           
             history.push('/seller/dashboard')
-            // window.location.reload(); 
+         
           }
           
         
      
       });
   
-      // clearFields();
     }
 
   return (

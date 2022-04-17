@@ -8,17 +8,10 @@ exports.fileUpload = (req, res) => {
     form.keepExtensions = true;
 
     form.parse(req, (err, fields, files) => {
-      console.log("form.bytesReceived");
+
 
       if (Object.keys(files).length) {
-        console.log("file size: " + JSON.stringify(files.fileUploaded.size));
-        console.log("file path: " + JSON.stringify(files.fileUploaded.path));
-        console.log("file name: " + JSON.stringify(files.fileUploaded.name));
-        console.log("file type: " + JSON.stringify(files.fileUploaded.type));
-        console.log(
-          "lastModifiedDate: " +
-            JSON.stringify(files.fileUploaded.lastModifiedDate)
-        );
+      
         res
           .json({
             message: "File uploaded successfully",

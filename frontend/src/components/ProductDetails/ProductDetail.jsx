@@ -31,8 +31,7 @@ function ProductDetail() {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then((json) => {
-      console.log("this is json images")
-      console.log(json);
+ 
   
       setProductData(json);
       setImageName(json.images);
@@ -46,7 +45,7 @@ function ProductDetail() {
     productData.item_color,
     productData.material,
   ];
-  console.log(productData);
+ 
   return (
     <div>
       <Header searchItem={()=>{}}/>

@@ -12,7 +12,7 @@ export default function TopProducts() {
         const data = await fetchData('/topProducts',{
             method:'GET'
         })
-        console.log('data : ',data)
+        
         setState({...state,products:data})
     },[])
 

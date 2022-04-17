@@ -12,7 +12,7 @@ import emailjs from '@emailjs/browser'
 
 export default function Popup(props) {
  
-  console.log(props);
+ 
    const [open,setOpen]=React.useState(props.open);
   const [form,setForm] = React.useState({to_name:'Craft Spot',from_email:'',phone_number:'',message:'',product_name:`${props.data.item_name}`});
    
@@ -29,13 +29,13 @@ export default function Popup(props) {
     props.setOpen(false);
   };
   const sendQuery =async()=>{
-    console.log(form);
+   
   //   if(form.from_email.trim() == '' || form.from_name.trim() == '' || form.phone_number.trim() == '' || form.message.trim() == ''|| form.product_name.trim() == '') {
   //     // setSnackBar({open:true,message:'Please complete all the fields',severity:'warning'})
   //     return;
   // }
   const result = await emailjs.send('service_leidpu2','template_h182xeq',form,'user_VWrjijknuIHuAqgNg6Sma')
-  console.log(result);
+ 
   setForm({to_name:'CraftSpot',from_email:'',phone_number:'',message:'',product_name:''});
   setOpen(false);
   props.setOpen(false);

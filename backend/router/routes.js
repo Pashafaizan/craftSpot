@@ -29,7 +29,7 @@ const uploadS3 = multer({
 const uploadProductImage = async (req,res) => {
     uploadS3(req,res,error=>{
         if(error) {
-            console.log(error);
+            
             return res.status(500).json({
                 status: 'fail',
                 error: error
@@ -39,7 +39,7 @@ const uploadProductImage = async (req,res) => {
             
             return res.json("No file selected")
         }
-        console.log("SUCCESS");
+         
         return res.json({images:req.files.map(v=>v.key)})
     })
 }

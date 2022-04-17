@@ -30,17 +30,15 @@ function App() {
   const [isSearch,setIsSearch]=React.useState(false);
   const [searchData,setSearchData]=React.useState([]);
    function productType(type) {
-     console.log("this is a product type");
-     console.log(typeProduct);
+ 
+
     setTypeProduct(type)
   
   }
 
 
 const searchItem = (check,data)=>{
-  console.log("this is search item");
-  console.log(check);
-  console.log(data);
+
  setIsSearch(check);
  setSearchData(data);
 }

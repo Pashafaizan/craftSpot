@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./addcartproduct.css";
 function Addcartproduct({ image, productDetail }) {
-  console.log("this is faizan pasha");
+   
   let users = JSON.parse(localStorage.getItem("users") || "[]");
-  console.log(users);
-  console.log(image);
+ 
 
   const [counter, setCounter] = useState(1);
   const incrementCounter = () => {

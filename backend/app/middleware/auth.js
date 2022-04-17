@@ -24,7 +24,7 @@ exports.tokenValidation = [
 validationResult
 
 exports.secure = async (req,res,next) => {
-    console.log("MIDDLEWARE AUTH")
+    
   
     let {accessToken} = req.body
     if (!accessToken) {
@@ -42,7 +42,7 @@ exports.secure = async (req,res,next) => {
       req.user = jwtData.user
       next()
     } catch(err) {
-      console.log(err.message)
+  
       return res.json({message:"Unauthorized"}).status(400);
     }
   }

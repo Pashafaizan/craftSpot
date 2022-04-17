@@ -9,7 +9,7 @@ export async function fetchData(path, requestOptions) {
     // 'Authorization' : localStorage.accessToken
   };
 
-  console.log(requestOptions);
+  
   await fetch(proxy + path, requestOptions).then(
     (res) => (response = res.json())
   );

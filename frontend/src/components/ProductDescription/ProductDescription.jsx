@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 
 export default function ProductDescription({ data }) {
   const classes = useStyles();
-  console.log(data);
+  ;
 
   return (
     <div

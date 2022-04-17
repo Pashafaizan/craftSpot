@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 exports.sellerSignup = (req,res)=>{
 
    sellerService.sellerSignup(req.body).then((e) => {
-     console.log(e);
+   
    res.send(e);
   });
 
@@ -14,12 +14,12 @@ exports.sellerSignup = (req,res)=>{
 
 exports.sellerLogin = (req,res)=>{
   const data = req.body;
-  console.log(data);
+
   
 
     let error = validationResult(req);
     if (!error.isEmpty()) {
-      console.log(error.array()[0].msg);
+    
       return res
         .json({
           error: error.array()[0].msg,

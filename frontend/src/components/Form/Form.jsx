@@ -47,13 +47,9 @@ function Form() {
   });
   const [imageName, setImageName] = useState([]);
 
-
-
-
   const clearForm = () => {
-    console.log("This is clear form");
+   
     setName("");
-     
     setDescription("");
     setItemMaterial("");
     setItemColor("");
@@ -65,7 +61,7 @@ function Form() {
     setPreviewImage([]);
     setImages([]);
     setDimensions({});
-    // inputRef.current.value = "";
+  
   };
 
   const classes = useStyles();
@@ -140,7 +136,7 @@ function Form() {
             e.push(data.filename);
             return e;
           });
-          console.log(imageName);
+        
           resolve();
         })
         .catch(() => {
@@ -150,8 +146,7 @@ function Form() {
   };
 
   const submitForm = async () => {
-    console.log("submit form");
-    console.log(payload);
+    
    
     setRequestProcessed(false);
 
@@ -171,7 +166,7 @@ function Form() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    console.log(res);
+   
     setRequestProcessed(true);
     if (res.success) {
       clearForm();
@@ -351,7 +346,7 @@ function Form() {
             value={images}
             onChange={(imageList, addUpdateIndex) => {
               // data for submit
-              console.log(imageList, addUpdateIndex);
+             
               setImages(imageList);
             }}
             maxNumber={4}

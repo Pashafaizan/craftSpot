@@ -49,7 +49,7 @@ export default function SeallerHeader() {
       </div>
       <div style={{marginRight:10,display:"flex",flexGrow:1,justifyContent:"flex-end",alignItems:"center"}}>
       <button onClick={()=>{
-        console.log("this is history form")
+      
         history.push('/form');
       }}>Add Product</button>
         <span onClick={()=>setSearchState(true)}><SearchSvg /></span>  
@@ -57,10 +57,7 @@ export default function SeallerHeader() {
         <span onClick={()=>{
           setProfileOption(!profileOption);
         }}><UserSvg /></span>
-        {/* <select >
-      
-        <option>Logout</option>
-        </select>  */}
+        
      {profileOption && <div className="profile_option">
         <div>Profile</div>
         <div>Logout</div>

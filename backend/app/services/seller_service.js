@@ -5,7 +5,7 @@ const { validationResult } = require("express-validator");
 
 
 exports.sellerSignup =async (data)=>{
-  console.log(data);
+ 
   const {
     
     user_name,
@@ -110,6 +110,6 @@ exports.sellerLogin = async (data) => {
         })
         .status(200);
     } catch (err) {
-      console.log(err.message);
+      res.json(err);
     }
   };
